@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { background: #F7F7F2; color: #17191C; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
+.font-grotesk { font-family: 'Plus Jakarta Sans', 'Space Grotesk', Inter, sans-serif; }
+.font-editorial { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+
+/* Subtle paper / sketch grid on light */
+.sci-grid {
+  background-image:
+    linear-gradient(rgba(23,60,110,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,60,110,0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+.sci-grid-fine {
+  background-image:
+    linear-gradient(rgba(23,60,110,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,60,110,0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.dot-grid {
+  background-image: radial-gradient(rgba(23,60,110,0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Light tactile card + hairline (same class names, new personality) */
+.hairline { border: 1px solid #E3E6EA; }
+/* Kept for compatibility — now a soft product shadow, never neon */
+.glow-cyan { box-shadow: 0 1px 2px rgba(23,25,28,0.05), 0 10px 26px -12px rgba(12,111,189,0.35); }
+.text-glow { text-shadow: none; }
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E3E6EA;
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(23,25,28,0.05), 0 8px 24px -12px rgba(23,25,28,0.14);
+}
+.card-hover { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(23,25,28,0.06), 0 16px 32px -16px rgba(23,25,28,0.20); border-color: #CBD5E1; }
+
+/* Buttons — classic, tactile */
+.btn-primary {
+  background: #17191C; color: #fff; border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(23,25,28,0.2), 0 10px 20px -12px rgba(23,25,28,0.4);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn-primary:hover { background: #0C6FBD; transform: translateY(-1px); }
+.btn-accent {
+  background: #0C6FBD; color: #fff; border-radius: 12px;
+  box-shadow: 0 6px 20px -8px rgba(12,111,189,0.5);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn-accent:hover { background: #0B6CB8; transform: translateY(-1px); }
+.btn-ghost {
+  background: #fff; color: #17191C; border: 1px solid #E3E6EA; border-radius: 12px;
+  transition: transform .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+}
+.btn-ghost:hover { border-color: #0C6FBD; color: #0C6FBD; transform: translateY(-1px); box-shadow: 0 8px 20px -12px rgba(23,25,28,0.25); }
+
+/* Section tints — subtle variation, never pure white everywhere */
+.tint-hero { background: #FAFAF7; }
+.tint-grey { background: #F4F5F2; }
+.tint-white { background: #FFFFFF; }
+.tint-blue { background: #EEF4FA; }
+.tint-deep { background: #EAF1F8; }
+
+::selection { background: rgba(12,111,189,0.18); }
+:focus-visible { outline: 2px solid #0C6FBD; outline-offset: 3px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
