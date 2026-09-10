@@ -1,4 +1,5 @@
 import Navigation from "@/components/navigation/Navigation";
+import StoryProgress from "@/components/navigation/StoryProgress";
 import Hero from "@/components/hero/Hero";
 import Idea from "@/components/idea/Idea";
 import Problem from "@/components/story/Problem";
@@ -16,12 +17,14 @@ import Comparison from "@/components/comparison/Comparison";
 import Future from "@/components/future/Future";
 import Impact from "@/components/impact/Impact";
 import Team from "@/components/team/Team";
+import WhatWouldYouExplore from "@/components/explore/WhatWouldYouExplore";
 import Finale from "@/components/team/Finale";
 
 export default function Page() {
   return (
     <>
       <Navigation />
+      <StoryProgress />
       <main id="main">
         <Hero />
         <Idea />
@@ -40,6 +43,7 @@ export default function Page() {
         <Future />
         <Impact />
         <Team />
+        <WhatWouldYouExplore />
         <Finale />
       </main>
     </>

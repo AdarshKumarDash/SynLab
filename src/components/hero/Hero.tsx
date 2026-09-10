@@ -29,8 +29,22 @@ export default function Hero() {
             to make practical science learning more accessible, flexible and approachable — beyond fixed rooms and rigid schedules.
           </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-8 flex flex-wrap gap-4">
-            <a href="#idea" className="btn-primary font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-bold">EXPLORE SYNLAB →</a>
-            <a href="#story" className="btn-ghost font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-semibold">OUR STORY</a>
+            <a href="#idea" className="btn-primary font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-bold pressable">EXPLORE SYNLAB →</a>
+            <a href="#story" className="btn-ghost font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-semibold pressable">OUR STORY</a>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.62 }} className="mt-5">
+            <a
+              href="#idea"
+              className="group inline-flex items-center gap-2.5 text-[12px] font-grotesk font-semibold tracking-[0.14em] text-body hover:text-cyanx transition-colors"
+              aria-label="Explore the lab — begin the guided story"
+            >
+              <span className="relative grid place-items-center w-8 h-8 rounded-full border border-cyanx/40 bg-white shadow-card overflow-hidden">
+                <span className="absolute inset-0 rounded-full bg-cyanx/10 scale-100 group-hover:scale-125 transition-transform" aria-hidden />
+                <ArrowDown size={14} className="relative text-cyanx group-hover:translate-y-0.5 transition-transform" aria-hidden />
+              </span>
+              EXPLORE THE LAB
+              <span className="hidden sm:inline text-muted font-medium tracking-normal normal-case">— a guided walk through the idea</span>
+            </a>
           </motion.div>
           <dl className="mt-10 grid grid-cols-3 max-w-md gap-4 text-center">
             {[["Portable", "Beyond fixed labs"], ["Hands-on", "Real experimentation"], ["Guided", "Structured learning"]].map(([v, l]) => (
@@ -43,12 +57,13 @@ export default function Hero() {
           </dl>
           <p className="mt-3 text-[11px] text-muted flex items-center gap-1.5"><Sparkles size={12} className="text-cyanx" /> An exciting new way to experience practical science.</p>
         </div>
-        <div className="relative h-[420px] md:h-[560px] card overflow-hidden" role="img" aria-label="Stylised 3D concept of the SynLab portable modular laboratory">
+        <div className="relative h-[420px] md:h-[560px] card overflow-hidden group" role="img" aria-label="Abstract concept of the SynLab portable modular laboratory idea">
           <div className="absolute inset-0 dot-grid opacity-60" aria-hidden />
           <HeroScene />
-          <div className="pointer-events-none absolute top-5 left-4 bg-white/90 backdrop-blur px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk text-ink shadow-card border border-line">Portable concept</div>
-          <div className="pointer-events-none absolute top-1/2 right-3 bg-white/90 backdrop-blur px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk text-ink shadow-card border border-line flex items-center gap-1.5"><Microscope size={12} /> Guided observation</div>
-          <div className="pointer-events-none absolute bottom-5 left-4 bg-ink text-white px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk flex items-center gap-2"><Magnet size={12} /> Modular design</div>
+          <div className="pointer-events-none absolute top-5 left-4 bg-white/90 backdrop-blur px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk text-ink shadow-card border border-line transition-transform duration-300 group-hover:-translate-y-0.5">Portable concept</div>
+          <div className="pointer-events-none absolute top-1/2 right-3 bg-white/90 backdrop-blur px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk text-ink shadow-card border border-line flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-x-0.5"><Microscope size={12} /> Guided observation</div>
+          <div className="pointer-events-none absolute bottom-5 left-4 bg-ink text-white px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk flex items-center gap-2 transition-transform duration-300 group-hover:translate-y-0.5"><Magnet size={12} /> Modular design</div>
+          <div className="pointer-events-none absolute bottom-5 right-4 hidden md:block text-[10px] font-grotesk font-semibold tracking-[0.12em] text-muted bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-line">CONCEPT VISUAL · NOT A BUILD GUIDE</div>
         </div>
       </div>
       <div className="mx-auto max-w-7xl px-5 md:px-8 pb-8 w-full">

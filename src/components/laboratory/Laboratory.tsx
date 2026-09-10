@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { LAB_ZONES } from "@/data/content";
 import { Reveal, SectionHead, Takeaway } from "../ui/primitives";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const POS: Record<string, { assembled: { x: number; y: number }; exploded: { x: number; y: number }; w: string; h: string }> = {
   hub: { assembled: { x: 0, y: 0 }, exploded: { x: 0, y: -10 }, w: "w-56 md:w-72", h: "h-40 md:h-52" },
@@ -46,21 +46,25 @@ export default function Laboratory() {
               {LAB_ZONES.map((z) => {
                 const cfg = POS[z.id];
                 const t = exploded ? cfg.exploded : cfg.assembled;
+                const isSel = sel === z.id;
                 return (
                   <motion.button
                     key={z.id}
                     onClick={() => setSel(z.id)}
-                    aria-pressed={sel === z.id}
+                    aria-pressed={isSel}
                     aria-label={z.name}
                     initial={false}
-                    animate={{ x: reduce ? 0 : t.x, y: reduce ? 0 : t.y, scale: sel === z.id ? 1.05 : 1 }}
+                    animate={{ x: reduce ? 0 : t.x, y: reduce ? 0 : t.y, scale: isSel ? 1.07 : 1 }}
                     transition={{ type: "spring", stiffness: 90, damping: 16 }}
-                    className={`absolute left-1/2 top-1/2 -ml-20 md:-ml-28 -mt-16 ${cfg.w} ${cfg.h} rounded-card border text-left p-3 shadow-card
-                      ${sel === z.id ? "border-cyanx bg-white z-10 ring-2 ring-cyanx/25" : "border-line bg-white/95 hover:border-cyanx/60"}`}
+                    whileHover={reduce ? undefined : { scale: isSel ? 1.07 : 1.03 }}
+                    className={`absolute left-1/2 top-1/2 -ml-20 md:-ml-28 -mt-16 ${cfg.w} ${cfg.h} rounded-card border text-left p-3 transition-shadow duration-300
+                      ${isSel ? "border-cyanx bg-white z-10 ring-2 ring-cyanx/25 shadow-lift" : "border-line bg-white/95 shadow-card hover:border-cyanx/60"}`}
                   >
                     <span className="font-grotesk text-[10px] font-bold tracking-[0.12em] text-cyanx">{z.name}</span>
                     <span className="block text-[11px] text-muted mt-1">{z.tag}</span>
-                    {exploded && <span className="absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full bg-sunny shadow-card border-2 border-white" aria-hidden />}
+                    {/* subtle glow cue for the selected area */}
+                    {isSel && <span className="absolute inset-0 rounded-card pointer-events-none" style={{ boxShadow: "inset 0 0 0 1px rgba(12,111,189,0.18), 0 0 24px -6px rgba(12,111,189,0.35)" }} aria-hidden />}
+                    {exploded && <span className={`absolute -top-1.5 -right-1.5 w-3 h-3 rounded-full border-2 border-white shadow-card ${isSel ? "bg-cyanx" : "bg-sunny"}`} aria-hidden />}
                   </motion.button>
                 );
               })}
@@ -85,15 +89,25 @@ export default function Laboratory() {
                   className={`font-grotesk text-[12px] font-semibold px-3 py-2 rounded-full border ${sel === z.id ? "border-cyanx text-white bg-cyanx" : "border-line bg-white text-body hover:border-cyanx"}`}>{z.name}</button>
               ))}
             </div>
-            <Reveal key={zone.id} className="card p-6 md:p-8">
-              <p className="font-grotesk text-[12px] font-semibold tracking-[0.14em] text-cyanx">{zone.tag.toUpperCase()}</p>
-              <h3 className="font-grotesk text-2xl font-bold mt-2 text-ink">{zone.name}</h3>
-              <p className="text-body mt-3 leading-relaxed text-sm md:text-base">{zone.body}</p>
-              <dl className="mt-5 rounded-xl border border-line bg-paper px-4 py-3 text-[13px]">
-                <div className="flex gap-2"><dt className="font-grotesk font-bold text-muted text-[11px] tracking-[0.1em] shrink-0 mt-0.5">THE IDEA —</dt><dd className="text-body">{zone.concept}</dd></div>
-                <div className="flex gap-2 mt-2"><dt className="font-grotesk font-bold text-cyanx text-[11px] tracking-[0.1em] shrink-0 mt-0.5">FOR YOU —</dt><dd className="text-body">{zone.value}</dd></div>
-              </dl>
-            </Reveal>
+            <div className="card p-6 md:p-8 overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={zone.id}
+                  initial={{ opacity: 0, y: reduce ? 0 : 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: reduce ? 0 : -8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="font-grotesk text-[12px] font-semibold tracking-[0.14em] text-cyanx">{zone.tag.toUpperCase()}</p>
+                  <h3 className="font-grotesk text-2xl font-bold mt-2 text-ink">{zone.name}</h3>
+                  <p className="text-body mt-3 leading-relaxed text-sm md:text-base">{zone.body}</p>
+                  <dl className="mt-5 rounded-xl border border-line bg-paper px-4 py-3 text-[13px]">
+                    <div className="flex gap-2"><dt className="font-grotesk font-bold text-muted text-[11px] tracking-[0.1em] shrink-0 mt-0.5">THE IDEA —</dt><dd className="text-body">{zone.concept}</dd></div>
+                    <div className="flex gap-2 mt-2"><dt className="font-grotesk font-bold text-cyanx text-[11px] tracking-[0.1em] shrink-0 mt-0.5">FOR YOU —</dt><dd className="text-body">{zone.value}</dd></div>
+                  </dl>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
         <figure className="card mt-8 p-4 md:p-6">
