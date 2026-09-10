@@ -64,7 +64,7 @@ export default function Future() {
           <img src="/assets/future-sketch.png" alt="Concept sketch of a future portable SynLab direction" className="w-full rounded-xl" loading="lazy" />
           <figcaption className="text-[11px] text-muted mt-3">Early concept sketch from Team Innovexa — an illustration of ambition, not a product render or blueprint.</figcaption>
         </figure>
-        <Takeaway>ONE shows portable science works. PRO imagines how far it could go — broader questions, deeper insight, more learners reached.</Takeaway>
+        <Takeaway>ONE turns the portable-science idea into something tangible and testable. PRO imagines how far it could go — broader questions, deeper insight, more learners reached.</Takeaway>
         <MethodNote>{READING_GUIDE.pro}</MethodNote>
         <Reveal className="mt-8">
           <a href="#impact" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4">THE BIGGER PICTURE ↓</a>

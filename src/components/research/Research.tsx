@@ -47,13 +47,15 @@ export default function Research() {
 
         <div className="mt-10 grid md:grid-cols-2 gap-4">
           <Reveal className="card p-8 text-center !bg-gradient-to-b !from-tint !to-white">
-            <p className="font-grotesk font-bold text-6xl md:text-7xl text-cyanx">{Math.round(v80)}%</p>
+            {/* Static target until in view: SSR / no-JS paint must read 80%, never 0%. */}
+            <p className="font-grotesk font-bold text-6xl md:text-7xl text-cyanx">{inView ? Math.round(v80) : 80}%</p>
             <p className="font-grotesk font-bold tracking-[0.06em] text-sm mt-2 text-ink">STUDENTS INTERESTED IN SCIENCE</p>
             <p className="text-[11px] text-muted mt-2">Source: IIT Madras 2026 presentation, as referenced in project materials.</p>
             <p className="text-[12px] text-body mt-2">The curiosity is there — the question is whether practical access keeps up.</p>
           </Reveal>
           <Reveal delay={0.1} className="card p-8 text-center">
-            <p className="font-grotesk font-bold text-6xl md:text-7xl text-ink">{Math.round(v30)}%</p>
+            {/* Static target until in view: SSR / no-JS paint must read 30%, never 0%. */}
+            <p className="font-grotesk font-bold text-6xl md:text-7xl text-ink">{inView ? Math.round(v30) : 30}%</p>
             <p className="font-grotesk font-bold tracking-[0.06em] text-sm mt-2 text-body">ENGAGE IN PRACTICAL ACTIVITIES</p>
             <p className="text-[11px] text-muted mt-2">Source: IIT Madras 2026 presentation, as referenced in project materials.</p>
             <p className="text-[12px] text-body mt-2">Interest outpaces hands-on opportunity — exactly the gap SynLab addresses.</p>
@@ -61,32 +63,32 @@ export default function Research() {
         </div>
 
         <div className="mt-6 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-          <ChartCard title="HOW OFTEN PRACTICAL WORK HAPPENS (n=65)" note="Very frequent 27.7% · Occasional 33.8% · Rare 27.7% · None 10.8%" insight="Most people do some practical work — the audience exists; access is the gap.">
+          <ChartCard title="HOW OFTEN PRACTICAL WORK HAPPENS" note="Very frequent 27.7% · Occasional 33.8% · Rare 27.7% · None 10.8%" insight="Most people do some practical work — the audience exists; access is the gap.">
             <ResponsiveContainer><BarChart data={SURVEY.usage} layout="vertical">
               <XAxis type="number" hide domain={[0, 40]} /><YAxis type="category" dataKey="label" width={90} tick={{ fill: "#697078", fontSize: 11 }} />
               <Tooltip contentStyle={tip} /><Bar dataKey="value" fill="#0C6FBD" radius={[0, 6, 6, 0]} isAnimationActive={false} />
             </BarChart></ResponsiveContainer>
           </ChartCard>
-          <ChartCard title="HOW OFTEN DIFFICULTIES APPEAR (n=65)" note="Often 13.8% + Sometimes 50.8% = 64.6% at least sometimes." insight="Difficulty is common, not exceptional — the experience needs rethinking.">
+          <ChartCard title="HOW OFTEN DIFFICULTIES APPEAR" note="Often 13.8% + Sometimes 50.8% = 64.6% at least sometimes." insight="Difficulty is common, not exceptional — the experience needs rethinking.">
             <ResponsiveContainer><PieChart>
               <Pie data={SURVEY.difficulty} dataKey="value" nameKey="label" innerRadius={45} outerRadius={75} paddingAngle={3} isAnimationActive={false} stroke="#fff" strokeWidth={2}>
                 {SURVEY.difficulty.map((_, i) => <Cell key={i} fill={["#0C6FBD", "#0E9F9A", "#E8A33D", "#E3E6EA"][i]} />)}
               </Pie><Tooltip contentStyle={tip} />
             </PieChart></ResponsiveContainer>
           </ChartCard>
-          <ChartCard title="ACCESS WHEN NEEDED (n=65)" note="Only 16.9% easy access → 83.1% face some limitation." insight="The clearest case for portability: access fails far more than it works.">
+          <ChartCard title="ACCESS WHEN NEEDED" note="Only 16.9% easy access → 83.1% face some limitation." insight="The clearest case for portability: access fails far more than it works.">
             <ResponsiveContainer><BarChart data={SURVEY.access}>
               <XAxis dataKey="label" tick={false} /><YAxis hide domain={[0, 60]} /><Tooltip contentStyle={tip} />
               <Bar dataKey="value" fill="#0C6FBD" radius={[6, 6, 0, 0]} isAnimationActive={false} />
             </BarChart></ResponsiveContainer>
           </ChartCard>
-          <ChartCard title="WHAT MAKES IT DIFFICULT? (n=59)" note="Time 32 · equipment 30 · guidance 25 · safety 19 · outdated 19." insight="Time, equipment and guidance lead — the three bets SynLab is designed around.">
+          <ChartCard title="WHAT MAKES IT DIFFICULT?" note="Time 54.2% · equipment 50.8% · guidance 42.4% · safety 32.2% · outdated 32.2% (multi-select)." insight="Time, equipment and guidance lead — the three bets SynLab is designed around.">
             <ResponsiveContainer><BarChart data={SURVEY.causes} layout="vertical">
               <XAxis type="number" hide /><YAxis type="category" dataKey="label" width={110} tick={{ fill: "#697078", fontSize: 11 }} />
-              <Tooltip contentStyle={tip} /><Bar dataKey="pct" fill="#0E9F9A" radius={[0, 6, 6, 0]} isAnimationActive={false} name="% of 59" />
+              <Tooltip contentStyle={tip} /><Bar dataKey="pct" fill="#0E9F9A" radius={[0, 6, 6, 0]} isAnimationActive={false} name="Share (%)" />
             </BarChart></ResponsiveContainer>
           </ChartCard>
-          <ChartCard title="OPENNESS TO BETTER SYSTEMS (n=65)" note="Extremely helpful 66.2% + Helpful 29.2% = 95.4% positive." insight="Near-unanimous welcome — nobody rated a better system unhelpful.">
+          <ChartCard title="OPENNESS TO BETTER SYSTEMS" note="Extremely helpful 66.2% + Helpful 29.2% = 95.4% positive." insight="Near-unanimous welcome — nobody rated a better system unhelpful.">
             <ResponsiveContainer><BarChart data={SURVEY.demand}>
               <XAxis dataKey="label" tick={false} /><YAxis hide domain={[0, 70]} /><Tooltip contentStyle={tip} />
               <Bar dataKey="value" radius={[6, 6, 0, 0]} isAnimationActive={false}>{SURVEY.demand.map((_, i) => <Cell key={i} fill={i < 2 ? "#0C6FBD" : "#E3E6EA"} />)}</Bar>

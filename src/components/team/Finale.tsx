@@ -11,7 +11,7 @@ export default function Finale() {
       <div className="relative mx-auto max-w-5xl px-5 md:px-8 text-center">
         <Reveal>
           <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">16 · LET&apos;S EXPLORE WHAT&apos;S POSSIBLE</p>
-          <h2 className="font-grotesk font-bold tracking-tight text-4xl md:text-6xl mt-4 text-ink leading-[1.05]">
+          <h2 className="font-grotesk font-bold tracking-tight text-4xl md:text-6xl mt-4 text-ink leading-[1.05] md:leading-[1.05]">
             Curious? Teaching?<br />Building the future <span className="text-cyanx">with us?</span>
           </h2>
           <p className="mt-5 max-w-2xl mx-auto text-body text-base md:text-lg leading-relaxed">
@@ -40,7 +40,7 @@ export default function Finale() {
         </Reveal>
         <p className="mt-4 text-[12px] text-muted flex items-center justify-center gap-1.5"><MessagesSquare size={13} /> No carts, no checkout — just a conversation about what&apos;s possible.</p>
         <Reveal delay={0.25}>
-          <p className="font-editorial italic leading-[1.05] text-5xl md:text-7xl text-ink mt-16">
+          <p className="font-editorial italic leading-[1.05] md:leading-[1.05] text-5xl md:text-7xl text-ink mt-16">
             The lab shouldn&apos;t be<br />a place.<br />
             <span className="text-cyanx">It should be<br />a possibility.</span>
           </p>
@@ -51,7 +51,7 @@ export default function Finale() {
           <p className="text-[11px] font-semibold tracking-[0.18em] font-grotesk text-muted mt-2">TEAM INNOVEXA</p>
         </Reveal>
         <footer className="mt-16 border-t border-line pt-6 text-[11px] text-muted leading-relaxed">
-          <p>SynLab — The Portable Lab · Team Innovexa. Stakeholder survey: n=65 main, n=59 difficulty reasons. Dashboard on this site is simulated. SynLab PRO is a future vision, not a current product.</p>
+          <p>SynLab — The Portable Lab · Team Innovexa. Research: a small directional stakeholder study. Dashboard on this site is simulated. SynLab PRO is a future vision, not a current product.</p>
           <p className="mt-2">Public concept website — implementation details are intentionally not shared. Background reading: <a className="underline hover:text-cyanx" href="https://www.unesco.org/en/stem" target="_blank" rel="noreferrer">UNESCO STEM</a> · <a className="underline hover:text-cyanx" href="https://www.unesco.org/gem-report/en/publication/technology" target="_blank" rel="noreferrer">GEM Report</a> · <a className="underline hover:text-cyanx" href="https://edu.rsc.org/analysis/practical-advice-for-practical-work/3008114.article" target="_blank" rel="noreferrer">RSC Practical Work</a></p>
         </footer>
       </div>

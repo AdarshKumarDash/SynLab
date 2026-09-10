@@ -1,5 +1,5 @@
 "use client";
-import { ANSWER_PILLARS } from "@/data/content";
+import { ANSWER_PILLARS, AT_A_GLANCE } from "@/data/content";
 import { Reveal, SectionHead, Takeaway } from "../ui/primitives";
 import { Move, Boxes, ShieldCheck, Compass, Sparkles } from "lucide-react";
 
@@ -15,6 +15,17 @@ export default function Answer() {
           title={<>A LAB THAT COMES<br />TO THE <span className="text-cyanx">LEARNER.</span></>}
           lede="SynLab is a portable, modular laboratory concept designed to bring practical experimentation closer to the learner — hands-on, adaptable and guided."
         />
+        <Reveal className="mt-8">
+          <dl className="card px-5 py-4 !bg-gradient-to-r !from-white !to-tint flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="SynLab at a glance">
+            <dt className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-cyanx">AT A GLANCE</dt>
+            {AT_A_GLANCE.map((g) => (
+              <div key={g.title} className="flex items-baseline gap-1.5" title={g.body}>
+                <dd className="font-grotesk font-bold text-[13px] tracking-[0.06em] text-ink">{g.title}</dd>
+                <dd className="text-[11px] text-muted hidden xl:inline">{g.body}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
           {ANSWER_PILLARS.map((a, i) => {
             const Icon = ICONS[a.icon as keyof typeof ICONS];

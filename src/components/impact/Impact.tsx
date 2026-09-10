@@ -9,7 +9,7 @@ export default function Impact() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-8 text-center">
         <Reveal>
           <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">14 · IMPACT</p>
-          <h2 className="font-grotesk mt-4 text-4xl md:text-6xl font-bold tracking-tight text-ink leading-[1.05]">
+          <h2 className="font-grotesk mt-4 text-4xl md:text-6xl font-bold tracking-tight text-ink leading-[1.05] md:leading-[1.05]">
             MORE ACCESS TO<br />PRACTICAL <span className="text-cyanx">SCIENCE.</span>
           </h2>
           <p className="mt-5 max-w-2xl mx-auto text-body text-base md:text-lg leading-relaxed">

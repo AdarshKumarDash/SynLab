@@ -46,8 +46,9 @@ export default function Technology() {
           </div>
         </div>
         <Takeaway>Sensing, control, modularity and a digital layer — combined so the experience feels simple, even though the thinking behind it isn&apos;t.</Takeaway>
-        <Reveal className="mt-8">
-          <a href="#dashboard" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4">SEE THE DIGITAL SIDE ↓</a>
+        <Reveal className="mt-8 flex flex-wrap gap-4">
+          <a href="#dashboard" className="btn-primary inline-block font-grotesk text-[13px] font-bold tracking-[0.08em] px-7 py-4">EXPLORE THE DEMO →</a>
+          <span className="self-center text-[12px] text-muted">Interactive concept demonstration using simulated values.</span>
         </Reveal>
       </div>
     </section>

@@ -19,7 +19,7 @@ export default function Problem() {
         <Reveal className="mt-8">
           <FactStrip facts={KEY_FINDINGS} />
         </Reveal>
-        <p className="mt-3 text-[12px] text-muted">From a 65-stakeholder survey (59 answered difficulty reasons). Select each lens to see it from a learner&apos;s perspective.</p>
+        <p className="mt-3 text-[12px] text-muted">From a small directional stakeholder study. Select each lens to see it from a learner&apos;s perspective.</p>
         <div className="mt-12 grid lg:grid-cols-[1fr_1.2fr] gap-8">
           <div role="tablist" aria-label="Barriers" className="flex lg:flex-col gap-2 overflow-x-auto no-scrollbar">
             {PROBLEMS.map((item, i) => (
@@ -58,10 +58,10 @@ export default function Problem() {
           </div>
         </div>
         <Takeaway>SynLab was created to rethink that experience — not to replace every laboratory, but to bring practical exploration closer to more learners.</Takeaway>
-        <MethodNote>Difficulty reasons use n=59 with multi-select, so shares sum above 100%. Access + demand use n=65. A small stakeholder sample — direction for design, not a census.</MethodNote>
+        <MethodNote>Difficulty reasons were multi-select, so shares sum above 100%. Based on a small directional stakeholder study conducted during the development of SynLab — intended to guide product thinking rather than represent a population-wide survey.</MethodNote>
         <Reveal className="mt-12 text-center">
           <p className="font-grotesk text-body font-semibold tracking-[0.18em] text-xs">SO WE ASKED:</p>
-          <p className="font-editorial italic text-4xl md:text-6xl mt-4 text-ink">What if the laboratory <span className="text-cyanx not-italic font-grotesk font-bold">could come to you?</span></p>
+          <p className="font-editorial italic text-4xl md:text-6xl mt-4 text-ink leading-[1.08] md:leading-[1.08]">What if the laboratory <span className="text-cyanx not-italic font-grotesk font-bold">could come to you?</span></p>
           <a href="#answer" className="btn-accent inline-block mt-8 font-grotesk text-[13px] font-bold tracking-[0.08em] px-7 py-4">SEE THE ANSWER ↓</a>
         </Reveal>
       </div>

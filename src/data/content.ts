@@ -19,52 +19,52 @@ export const NAV_LINKS = [
 export const DASHBOARD_URL = "https://synlab-demo-control-main.vercel.app";
 export const CONTACT_EMAIL = "m256622@dpsmiyapur.com";
 
-// Visitor-framed barriers (source: n=65 main, n=59 difficulty reasons).
+// Visitor-framed barriers (source: team stakeholder study; percentages only).
 // WHERE / WHEN / HOW / SAFETY / ACCESS framing for public readability.
 export const PROBLEMS = [
   {
     key: "WHERE",
     title: "WHERE",
     question: "Where can I actually do practical science?",
-    body: "Only 16.9% of surveyed stakeholders described labs as easily accessible when needed — 83.1% experienced some degree of limitation.",
+    body: "Only 16.9% of surveyed stakeholders described labs as easily accessible when needed — most experienced some degree of limitation.",
     stat: "83.1% face limits",
-    detail: "16.9% easy access · the rest face limitations, difficulty or no access (n=65).",
+    detail: "16.9% easy access · the rest face limitations, difficulty or no access.",
     implication: "When the lab is fixed in one place, opportunity stays fixed with it.",
   },
   {
     key: "WHEN",
     title: "WHEN",
     question: "When do I get enough time to explore?",
-    body: "Time constraints were the top difficulty reason — 32 of 59 responses (54.2%). Fixed schedules cut exploration short.",
+    body: "Time constraints were the top difficulty reason — cited by 54.2% of those who answered. Fixed schedules cut exploration short.",
     stat: "54.2% cite time",
-    detail: "32 of 59 difficulty responses — the #1 reason.",
+    detail: "The #1 difficulty reason in the study.",
     implication: "Curiosity doesn't fit neatly into a timetable slot.",
   },
   {
     key: "HOW",
     title: "HOW",
     question: "How do I know what to do next?",
-    body: "Lack of clear guidance was cited in 25 of 59 responses (42.4%). Equipment alone isn't enough.",
+    body: "Lack of clear guidance was cited by 42.4% of those who answered. Equipment alone isn't enough.",
     stat: "42.4% lack guidance",
-    detail: "25 of 59 difficulty responses.",
+    detail: "A widely shared difficulty in the study.",
     implication: "Hands-on work needs structure — not just apparatus.",
   },
   {
     key: "SAFETY",
     title: "SAFETY",
     question: "Can I explore with confidence?",
-    body: "Safety concerns were cited in 19 of 59 responses (32.2%), alongside outdated or insufficient setups (32.2%).",
+    body: "Safety concerns were cited by 32.2% of those who answered, alongside outdated or insufficient setups (32.2%).",
     stat: "32.2% cite safety",
-    detail: "19 of 59 for safety · 19 of 59 for outdated setups.",
+    detail: "Safety and outdated setups each cited by about a third.",
     implication: "Confidence comes from controlled, monitored, guided experiences.",
   },
   {
     key: "ACCESS",
     title: "ACCESS",
     question: "Can the experience adapt to me?",
-    body: "Limited equipment availability was cited in 30 of 59 responses (50.8%), and 64.6% face difficulties often or sometimes.",
+    body: "Limited equipment availability was cited by 50.8% of those who answered, and 64.6% face difficulties often or sometimes.",
     stat: "50.8% lack equipment",
-    detail: "30 of 59 · 64.6% face difficulties often/sometimes (n=65).",
+    detail: "About half cite equipment · 64.6% face difficulties often or sometimes.",
     implication: "One rigid setup can't serve every learner, everywhere.",
   },
 ];
@@ -72,16 +72,16 @@ export const PROBLEMS = [
 // Public story chapters — human narrative, no engineering iterations.
 export const TIMELINE = [
   { id: "question", step: "01", title: "THE QUESTION", body: "We started with a simple frustration: practical science felt locked inside fixed rooms, fixed hours and fixed setups — while curiosity itself is anything but fixed." },
-  { id: "research", step: "02", title: "THE RESEARCH", body: "Team Innovexa spoke with students, educators, parents, hobbyists, institutions and researchers (65 stakeholders). Accessibility, time, safety and guidance kept coming up — so we knew the problem was real." },
+  { id: "research", step: "02", title: "THE RESEARCH", body: "Team Innovexa spoke with students, educators, parents, hobbyists, institutions and researchers. Accessibility, time, safety and guidance kept coming up — so we knew the problem was real." },
   { id: "idea", step: "03", title: "THE IDEA", body: "What if practical science could travel? A laboratory concept that packs down, moves with the learner, and adapts to different needs — instead of asking the learner to always come to it." },
   { id: "prototype", step: "04", title: "THE PROTOTYPE", body: "The idea became something tangible: a portable, modular laboratory concept combining hands-on equipment, observation and a digital layer for following along." },
-  { id: "one", step: "05", title: "SYNLAB ONE", body: "The first base-model direction — a working prototype that proves the concept: real experimentation, observation and monitoring in a portable form." },
+  { id: "one", step: "05", title: "SYNLAB ONE", body: "The first base-model direction — a tangible prototype that turns the concept into something demonstrable and testable: hands-on experimentation, observation and monitoring in a portable form." },
   { id: "next", step: "06", title: "THE NEXT CHAPTER", body: "SynLab PRO sketches where the concept could go next — broader sensing, deeper investigation, intelligent assistance — as a clearly labelled future vision." },
 ];
 
 // Conceptual zones only — no placement, dimensions, wiring or part numbers.
 export const LAB_ZONES = [
-  { id: "hub", name: "CENTRAL HUB", tag: "The heart of the experience", body: "One core unit brings everything together, so setup stays simple and the experience feels like a single lab — not a box of parts.", concept: "Everything connects here.", value: "Less setup, more experimenting." },
+  { id: "hub", name: "CENTRAL HUB", tag: "The heart of the experience", body: "One core unit brings everything together, so setup stays simple and the experience feels like a single lab — not a box of parts.", concept: "The core brings the experience together.", value: "Less setup, more experimenting." },
   { id: "carry", name: "PORTABLE FORM", tag: "Designed to travel", body: "The concept packs down for transport and sets up where learning happens — a classroom, a club room, a field table.", concept: "The lab comes to you.", value: "Learning beyond the lab room." },
   { id: "modules", name: "MODULES", tag: "Adapts to the activity", body: "Interchangeable areas support different kinds of practical work — including close observation with a guided slide setup.", concept: "Change the activity, not the lab.", value: "One platform, many lessons." },
   { id: "sensing", name: "SENSING", tag: "Follow what's happening", body: "Built-in sensing follows environmental and experimental conditions, so learners can observe change — not just guess at it.", concept: "See the invisible.", value: "Measurements meet meaning." },
@@ -97,8 +97,6 @@ export const TECH_PILLARS = [
 ];
 
 export const SURVEY = {
-  nMain: 65,
-  nReasons: 59,
   usage: [
     { label: "Very frequent", value: 27.7 },
     { label: "Occasional", value: 33.8 },
@@ -112,11 +110,11 @@ export const SURVEY = {
     { label: "Never", value: 10.8 },
   ],
   causes: [
-    { label: "Time constraints", count: 32, pct: 54.2 },
-    { label: "Equipment availability", count: 30, pct: 50.8 },
-    { label: "Lack of guidance", count: 25, pct: 42.4 },
-    { label: "Safety concerns", count: 19, pct: 32.2 },
-    { label: "Outdated setups", count: 19, pct: 32.2 },
+    { label: "Time constraints", pct: 54.2 },
+    { label: "Equipment availability", pct: 50.8 },
+    { label: "Lack of guidance", pct: 42.4 },
+    { label: "Safety concerns", pct: 32.2 },
+    { label: "Outdated setups", pct: 32.2 },
   ],
   access: [
     { label: "Easily accessible", value: 16.9 },
@@ -148,8 +146,16 @@ export const TEAM = [
 
 // ─── Public presentation helpers (visitor-safe, source-supported) ──
 
-export const ANSWER_PILLARS = [
-  { title: "PORTABLE", body: "Take practical learning beyond a fixed laboratory.", icon: "move" },
+// At-a-glance snapshot — high-level concept words only, no implementation.
+export const AT_A_GLANCE = [
+  { title: "PORTABLE", body: "Learning beyond a fixed room." },
+  { title: "MODULAR", body: "One platform, many activities." },
+  { title: "HANDS-ON", body: "Real experimentation, not just reading." },
+  { title: "GUIDED", body: "Structured support at every step." },
+  { title: "CONNECTED", body: "Doing paired with observing." },
+];
+
+export const ANSWER_PILLARS = [  { title: "PORTABLE", body: "Take practical learning beyond a fixed laboratory.", icon: "move" },
   { title: "MODULAR", body: "Adapt the experience to different learning needs.", icon: "modules" },
   { title: "SAFER", body: "Designed with safety-conscious experimentation in mind.", icon: "shield" },
   { title: "GUIDED", body: "Designed to support structured experimentation.", icon: "compass" },
@@ -184,10 +190,10 @@ export const USE_CASES = [
 ];
 
 export const KEY_FINDINGS = [
-  { value: "83.1%", label: "face access limits", note: "Only 16.9% call labs easily accessible (n=65)." },
-  { value: "64.6%", label: "hit difficulties", note: "Often 13.8% + Sometimes 50.8% (n=65)." },
-  { value: "54.2%", label: "blocked by time", note: "Top difficulty reason: 32 of 59." },
-  { value: "95.4%", label: "welcome better systems", note: "Extremely helpful 66.2% + Helpful 29.2% (n=65)." },
+  { value: "83.1%", label: "face access limits", note: "Only 16.9% call labs easily accessible." },
+  { value: "64.6%", label: "hit difficulties", note: "Often 13.8% + Sometimes 50.8%." },
+  { value: "54.2%", label: "blocked by time", note: "The top difficulty reason in the study." },
+  { value: "95.4%", label: "welcome better systems", note: "Extremely helpful 66.2% + Helpful 29.2%." },
 ];
 
 export const DASHBOARD_METRICS = [
@@ -214,8 +220,8 @@ export const IMPACT_THEMES = [
 ];
 
 export const READING_GUIDE = {
-  survey: "n=65 answered main questions; n=59 answered difficulty reasons (multi-select, so shares sum above 100%). A small stakeholder sample — direction for design, not a census.",
-  dashboard: "Every value on this page is simulated in-browser for illustration. The linked demo shows the dashboard concept.",
+  survey: "Based on a small directional stakeholder study conducted during the development of SynLab. Findings are intended to guide product thinking rather than represent a population-wide survey.",
+  dashboard: "SIMULATION MODE — demo values are simulated in-browser. Not connected to live laboratory equipment. The linked demo shows the dashboard concept.",
   pro: "Everything labelled PRO is a proposed future direction — vision, not current capability.",
 };
 

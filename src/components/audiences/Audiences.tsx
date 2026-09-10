@@ -36,7 +36,7 @@ export default function Audiences() {
             <div className="relative">
               <span className="w-12 h-12 rounded-2xl bg-ink text-white grid place-items-center"><Icon size={22} /></span>
               <p className="font-grotesk text-[12px] font-semibold tracking-[0.14em] text-cyanx mt-5">{a.title}</p>
-              <h3 className="font-editorial italic text-3xl md:text-4xl mt-2 text-ink leading-tight">“{a.line}”</h3>
+              <h3 className="font-editorial italic text-3xl md:text-4xl mt-2 text-ink leading-tight md:leading-tight">“{a.line}”</h3>
               <p className="text-body mt-4 leading-relaxed">{a.body}</p>
               <p className="mt-5 text-[11px] text-muted">Positioned as possibilities for each group — not guarantees. SynLab complements existing learning, it doesn&apos;t replace teachers or labs.</p>
             </div>

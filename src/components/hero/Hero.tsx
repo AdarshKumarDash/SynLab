@@ -17,7 +17,7 @@ export default function Hero() {
           <motion.p initial={{ opacity: 0, y: reduce ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 font-grotesk text-[12px] font-semibold tracking-[0.14em] text-cyanx bg-cyanx/10 border border-cyanx/25 rounded-full px-4 py-1.5">
             BY TEAM INNOVEXA · THE PORTABLE LAB
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: reduce ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-grotesk font-bold leading-[0.98] tracking-tight mt-5 text-6xl md:text-8xl text-ink">
+          <motion.h1 initial={{ opacity: 0, y: reduce ? 0 : 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-grotesk font-bold leading-[0.98] md:leading-[0.98] tracking-tight mt-5 text-6xl md:text-8xl text-ink">
             Syn<span className="text-cyanx">Lab</span>
             <span className="block text-lg md:text-2xl font-semibold tracking-[0.08em] text-body mt-4">THE PORTABLE LAB</span>
           </motion.h1>

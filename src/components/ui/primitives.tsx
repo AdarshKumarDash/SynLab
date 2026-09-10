@@ -28,7 +28,7 @@ export function SectionHead({ index, eyebrow, title, lede }: { index: string; ey
         </div>
       </Reveal>
       <Reveal delay={0.08}>
-        <h2 className="font-grotesk mt-4 text-3xl md:text-5xl font-bold leading-[1.08] tracking-tight text-ink">{title}</h2>
+        <h2 className="font-grotesk mt-4 text-3xl md:text-5xl font-bold leading-[1.08] md:leading-[1.08] tracking-tight text-ink">{title}</h2>
       </Reveal>
       {lede ? (
         <Reveal delay={0.16}>
@@ -77,6 +77,9 @@ export function FactStrip({ facts }: { facts: { value: string; label: string }[]
 }
 
 export function useCountUp(target: number, active: boolean, duration = 1400) {
+  // NOTE: callers render the static `target` until `active` is true, so the
+  // server-rendered / pre-intersection paint already shows the intended value
+  // and the public stats can never get stuck at 0%.
   const [val, setVal] = useState(0);
   const reduce = useReducedMotion();
   useEffect(() => {

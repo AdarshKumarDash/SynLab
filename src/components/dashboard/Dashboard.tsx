@@ -45,7 +45,7 @@ export default function Dashboard() {
           <span className="inline-flex items-center gap-2 text-[12px] font-grotesk font-semibold tracking-[0.10em] border border-[#F0D9A8] text-[#8a5a12] px-4 py-2 rounded-full bg-[#FDF3E2]">
             <span className="w-2 h-2 rounded-full bg-sunny" aria-hidden /> SIMULATION MODE — DEMO VALUES ONLY
           </span>
-          <span className="text-[12px] text-muted">Watch a few seconds: values drift to suggest how a guided session could feel.</span>
+          <span className="text-[12px] text-muted">Interactive concept demonstration using simulated values. Not connected to live laboratory equipment.</span>
         </Reveal>
         <div className="card mt-8 overflow-hidden !rounded-[22px]">
           <div className="flex items-center justify-between border-b border-line bg-paper px-5 py-3">
@@ -88,7 +88,7 @@ export default function Dashboard() {
             </ul>
           </div>
           <div className="border-t border-line bg-paper px-5 py-4 flex flex-wrap items-center gap-4 justify-between">
-            <p className="text-[11px] text-muted">Concept preview. No backend, protocol or implementation detail is exposed here.</p>
+            <p className="text-[11px] text-muted">Concept preview. Demo values are simulated in-browser. Technical implementation details are intentionally not shown here.</p>
             <a href={DASHBOARD_URL} target="_blank" rel="noreferrer" className="btn-accent inline-flex items-center gap-2 font-grotesk text-[13px] font-bold px-5 py-3">OPEN DEMO DASHBOARD <ExternalLink size={14} /></a>
           </div>
         </div>

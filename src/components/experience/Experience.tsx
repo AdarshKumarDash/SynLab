@@ -10,7 +10,7 @@ export default function Experience() {
           index="04"
           eyebrow="HOW THE EXPERIENCE FEELS"
           title={<>FROM CURIOUS<br />TO <span className="text-cyanx">CAPABLE.</span></>}
-          lede="Forget wiring diagrams. Here's what a SynLab session feels like from the learner's seat — six simple moves, same rhythm every time."
+          lede="No engineering manual needed — here's what a SynLab session feels like from the learner's seat: six simple moves, same rhythm every time."
         />
         <ol className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {EXPERIENCE_STEPS.map((s, i) => (

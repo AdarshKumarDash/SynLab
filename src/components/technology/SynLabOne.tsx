@@ -52,10 +52,20 @@ export default function SynLabOne() {
             </ul>
           </div>
         </div>
-        <Takeaway>ONE proves the idea works in the real world — now explore it visually, then see who it could help.</Takeaway>
+        <Takeaway>ONE turns the idea into something tangible and testable — now explore it visually, then see who it could help.</Takeaway>
         <Reveal className="mt-8 flex flex-wrap gap-4">
           <a href="#lab" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4">SEE THE CONCEPT ↓</a>
           <a href="#audiences" className="btn-primary inline-block font-grotesk text-[13px] font-bold tracking-[0.08em] px-7 py-4">WHO IS IT FOR? →</a>
+        </Reveal>
+        <Reveal className="mt-6 grid sm:grid-cols-2 gap-3" aria-label="Today and next">
+          <div className="card p-5 !bg-gradient-to-r !from-tint !to-white">
+            <p className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-cyanx">TODAY · SYNLAB ONE</p>
+            <p className="text-[13px] text-body mt-1.5 leading-relaxed">Base-model prototype — tangible, demonstrable and testable.</p>
+          </div>
+          <a href="#future" className="card p-5 card-hover block">
+            <p className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-muted">NEXT · SYNLAB PRO →</p>
+            <p className="text-[13px] text-body mt-1.5 leading-relaxed">Future / proposed direction — a vision, not a current product.</p>
+          </a>
         </Reveal>
       </div>
     </section>

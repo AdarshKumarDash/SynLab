@@ -72,7 +72,10 @@ export default function Laboratory() {
                 </svg>
               )}
             </div>
-            <div className="absolute bottom-3 left-4 text-[10px] font-semibold tracking-[0.12em] font-grotesk text-muted">CONCEPT ILLUSTRATION · NOT A BUILD GUIDE</div>
+            <div className="absolute bottom-3 left-4 right-4 flex flex-wrap gap-x-2 gap-y-0.5 items-baseline">
+              <span className="text-[10px] font-semibold tracking-[0.12em] font-grotesk text-muted">CONCEPT ILLUSTRATION · NOT A BUILD GUIDE</span>
+              <span className="text-[10px] text-muted">Conceptual illustration only. Implementation details are intentionally not shown.</span>
+            </div>
           </div>
 
           <div>
