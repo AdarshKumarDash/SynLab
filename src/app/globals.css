@@ -5,10 +5,17 @@
 @tailwind utilities;
 
 :root { color-scheme: light; }
+.dark { color-scheme: dark; }
 html { scroll-behavior: smooth; }
 body { background: #F7F7F2; color: #17191C; font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
 .font-grotesk { font-family: 'Plus Jakarta Sans', 'Space Grotesk', Inter, sans-serif; }
 .font-editorial { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+
+/* Theme transition — calm, restrained */
+body, .card, .tint-hero, .tint-grey, .tint-white, .tint-blue, .tint-deep,
+.btn-primary, .btn-accent, .btn-ghost {
+  transition: background-color .35s ease, border-color .35s ease, color .35s ease, box-shadow .35s ease;
+}
 
 /* Subtle paper / sketch grid on light */
 .sci-grid {
@@ -87,3 +94,145 @@ body { background: #F7F7F2; color: #17191C; font-family: Inter, system-ui, sans-
 
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
+
+/* ─── DARK THEME — "modern science studio at night" ───
+   Deep neutral backgrounds, restrained accents, soft borders, minimal glow.
+   Never cyberpunk / neon. */
+.dark body { background: #0E1115; color: #E7EAEF; }
+.dark .sci-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+}
+.dark .sci-grid-fine {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+}
+.dark .dot-grid { background-image: radial-gradient(rgba(255,255,255,0.13) 1px, transparent 1px); }
+.dark .hairline { border-color: rgba(255,255,255,0.10); }
+.dark .glow-cyan { box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 12px 28px -14px rgba(77,163,230,0.35); }
+
+.dark .card {
+  background: #171C23;
+  border-color: rgba(255,255,255,0.09);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 14px 30px -16px rgba(0,0,0,0.6);
+}
+.dark .card-hover:hover {
+  border-color: rgba(77,163,230,0.45);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.45), 0 18px 34px -16px rgba(0,0,0,0.65);
+  transform: translateY(-2px);
+}
+
+.dark .btn-primary { background: #E9EDF2; color: #0E1115; box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 10px 22px -12px rgba(0,0,0,0.7); }
+.dark .btn-primary:hover { background: #4DA3E6; color: #08111A; box-shadow: 0 8px 24px -10px rgba(77,163,230,0.5); }
+.dark .btn-accent { background: #2E8FD4; color: #fff; box-shadow: 0 8px 22px -10px rgba(46,143,212,0.6); }
+.dark .btn-accent:hover { background: #4DA3E6; color: #08111A; }
+.dark .btn-ghost { background: #171C23; color: #E7EAEF; border-color: rgba(255,255,255,0.12); }
+.dark .btn-ghost:hover { border-color: #4DA3E6; color: #7FBDEE; box-shadow: 0 10px 24px -14px rgba(0,0,0,0.7); }
+
+.dark .tint-hero { background: #0E1115; }
+.dark .tint-grey { background: #11151A; }
+.dark .tint-white { background: #12161C; }
+.dark .tint-blue { background: #101820; }
+.dark .tint-deep { background: #0F1720; }
+
+/* Core utility remaps so existing light-first markup stays readable */
+.dark .bg-white { background-color: #171C23 !important; }
+.dark .bg-paper { background-color: #141920 !important; }
+.dark .bg-cream { background-color: #1B2129 !important; }
+.dark .bg-tint { background-color: #16202B !important; }
+.dark .bg-void { background-color: #0E1115 !important; }
+.dark .text-ink { color: #EDEFF3 !important; }
+.dark .text-body { color: #B7BEC7 !important; }
+.dark .text-muted { color: #8F97A1 !important; }
+.dark .border-line { border-color: rgba(255,255,255,0.10) !important; }
+.dark .divide-line > :not([hidden]) ~ :not([hidden]) { border-color: rgba(255,255,255,0.10) !important; }
+
+/* Ink pills stay dark-lifted, never invisible */
+.dark .bg-ink { background-color: #232B35 !important; color: #EDEFF3 !important; border: 1px solid rgba(255,255,255,0.12); }
+.dark .text-white { color: #F4F6F8 !important; }
+.dark .text-cyanx { color: #6FB7EC !important; }
+.dark .bg-cyanx { background-color: #2E8FD4 !important; }
+.dark .border-cyanx { border-color: rgba(111,183,236,0.55) !important; }
+
+/* Translucent white surfaces */
+.dark .bg-white\/90, .dark .bg-white\/92, .dark .bg-white\/85, .dark .bg-white\/80, .dark .bg-white\/95, .dark .bg-white\/70, .dark .bg-white\/60 { background-color: rgba(23,28,35,0.92) !important; }
+.dark .bg-\[\#FAFAF7\]\/90, .dark .bg-\[\#FAFAF7\]\/95 { background-color: rgba(14,17,21,0.92) !important; }
+
+/* Solid light fills reused as hairlines, tracks and watermarks */
+.dark .bg-line { background-color: rgba(255,255,255,0.12) !important; }
+.dark .text-cream { color: rgba(255,255,255,0.16) !important; }
+
+/* Cyan accents at opacity — lifted so rings, borders and markers stay visible */
+.dark .border-cyanx\/15 { border-color: rgba(111,183,236,0.28) !important; }
+.dark .border-cyanx\/25 { border-color: rgba(111,183,236,0.38) !important; }
+.dark .border-cyanx\/30 { border-color: rgba(111,183,236,0.45) !important; }
+.dark .border-cyanx\/40 { border-color: rgba(111,183,236,0.55) !important; }
+.dark .border-cyanx\/60 { border-color: rgba(111,183,236,0.70) !important; }
+.dark .bg-cyanx\/20 { background-color: rgba(77,163,230,0.22) !important; }
+.dark .bg-cyanx\/40 { background-color: rgba(77,163,230,0.38) !important; }
+.dark .bg-cyanx\/50 { background-color: rgba(111,183,236,0.55) !important; }
+.dark .bg-cyanx\/60 { background-color: rgba(111,183,236,0.60) !important; }
+.dark .text-cyanx\/20 { color: rgba(111,183,236,0.30) !important; }
+.dark .ring-cyanx\/20 { --tw-ring-color: rgba(111,183,236,0.38) !important; }
+.dark .ring-cyanx\/25 { --tw-ring-color: rgba(111,183,236,0.42) !important; }
+
+/* Hover states — keep the interactive language, retuned for dark */
+.dark .hover\:text-cyanx:hover { color: #7FBDEE !important; }
+.dark .hover\:text-ink:hover { color: #FFFFFF !important; }
+.dark .hover\:border-cyanx:hover { border-color: rgba(111,183,236,0.60) !important; }
+.dark .hover\:border-cyanx\/50:hover { border-color: rgba(111,183,236,0.60) !important; }
+.dark .hover\:border-cyanx\/60:hover { border-color: rgba(111,183,236,0.70) !important; }
+.dark .hover\:bg-tint:hover { background-color: rgba(46,143,212,0.14) !important; }
+.dark .hover\:bg-paper:hover { background-color: #1B222B !important; }
+.dark .hover\:bg-white:hover { background-color: #1E2530 !important; }
+.dark .hover\:bg-tint\/60:hover { background-color: rgba(46,143,212,0.14) !important; }
+.dark .group:hover .group-hover\:bg-cyanx { background-color: #2E8FD4 !important; }
+.dark .group:hover .group-hover\:text-cyanx { color: #7FBDEE !important; }
+.dark .group:hover .group-hover\:border-cyanx { border-color: rgba(111,183,236,0.60) !important; }
+.dark .group:hover .group-hover\:border-cyanx\/40 { border-color: rgba(111,183,236,0.55) !important; }
+.dark .group:hover .group-hover\:bg-tint { background-color: rgba(46,143,212,0.14) !important; }
+.dark .group:hover .group-hover\:bg-cyanx\/60 { background-color: rgba(111,183,236,0.60) !important; }
+
+/* Elevation tuned for dark — soft depth, never neon */
+.dark .shadow-card { --tw-shadow: 0 1px 2px rgba(0,0,0,0.50), 0 10px 24px -14px rgba(0,0,0,0.65) !important; box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important; }
+.dark .shadow-lift { --tw-shadow: 0 2px 6px rgba(0,0,0,0.50), 0 18px 36px -16px rgba(0,0,0,0.70) !important; box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important; }
+.dark .shadow-soft { --tw-shadow: 0 6px 20px -8px rgba(77,163,230,0.35) !important; box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important; }
+
+/* Gradient stops that referenced white/tint/cream */
+.dark .from-white { --tw-gradient-from: #1B222B var(--tw-gradient-from-position) !important; --tw-gradient-to: rgba(27,34,43,0) var(--tw-gradient-to-position) !important; }
+.dark .to-white { --tw-gradient-to: #1B222B var(--tw-gradient-to-position) !important; }
+.dark .from-tint { --tw-gradient-from: #16202B var(--tw-gradient-from-position) !important; --tw-gradient-to: rgba(22,32,43,0) var(--tw-gradient-to-position) !important; }
+.dark .to-tint { --tw-gradient-to: #16202B var(--tw-gradient-to-position) !important; }
+.dark .to-cream { --tw-gradient-to: #1B2129 var(--tw-gradient-to-position) !important; }
+.dark .from-cream { --tw-gradient-from: #1B2129 var(--tw-gradient-from-position) !important; }
+
+/* Sunny / leaf / paper accents stay legible */
+.dark .bg-\[\#FDF3E2\] { background-color: rgba(232,163,61,0.14) !important; }
+.dark .text-\[\#8a5a12\] { color: #E9BE7C !important; }
+.dark .border-\[\#F0D9A8\] { border-color: rgba(232,163,61,0.35) !important; }
+.dark .bg-cream\/60 { background-color: rgba(27,33,41,0.7) !important; }
+.dark .bg-tint\/60 { background-color: rgba(46,143,212,0.10) !important; }
+.dark .bg-cyanx\/10 { background-color: rgba(77,163,230,0.14) !important; }
+.dark .text-sunny { color: #E9BE7C !important; }
+.dark .text-leaf { color: #7CC9A2 !important; }
+.dark .text-bluex { color: #6FD3CC !important; }
+
+/* Subtle borders on header / footer */
+.dark header { border-color: rgba(255,255,255,0.08) !important; }
+.dark ::selection { background: rgba(77,163,230,0.32); }
+.dark :focus-visible { outline-color: #6FB7EC; }
+
+/* Recharts legibility */
+.dark .recharts-cartesian-axis-tick text { fill: #8F97A1; }
+.dark .recharts-legend-item-text { color: #B7BEC7 !important; }
+.dark .recharts-tooltip-wrapper { filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5)); }
+
+/* Hero canvas renders its own light/dark palette (see HeroScene) — no filter needed */
+
+/* Reduced motion still wins */
+@media (prefers-reduced-motion: reduce) {
+  body, .card, .tint-hero, .tint-grey, .tint-white, .tint-blue, .tint-deep,
+  .btn-primary, .btn-accent, .btn-ghost { transition-duration: 0.01ms !important; }
+}

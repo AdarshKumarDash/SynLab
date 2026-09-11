@@ -1,6 +1,7 @@
 "use client";
 import { SURVEY, KEY_FINDINGS, READING_GUIDE } from "@/data/content";
 import { Reveal, SectionHead, FactStrip, Takeaway, MethodNote, useCountUp, useInViewOnce } from "../ui/primitives";
+import { useTheme } from "../theme/ThemeProvider";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from "recharts";
 
 function ChartCard({ title, note, insight, children }: { title: string; note: string; insight: string; children: React.ReactNode }) {
@@ -18,13 +19,20 @@ export default function Research() {
   const { ref, inView } = useInViewOnce<HTMLDivElement>();
   const v80 = useCountUp(80, inView);
   const v30 = useCountUp(30, inView);
-  const tip = { background: "#FFFFFF", border: "1px solid #E3E6EA", borderRadius: 12, fontSize: 12, color: "#17191C" };
+  const { theme } = useTheme();
+  const dark = theme === "dark";
+  const tip = dark
+    ? { background: "#171C23", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12, fontSize: 12, color: "#EDEFF3" }
+    : { background: "#FFFFFF", border: "1px solid #E3E6EA", borderRadius: 12, fontSize: 12, color: "#17191C" };
+  const tickFill = dark ? "#8F97A1" : "#697078";
+  const barA = dark ? "#6FB7EC" : "#0C6FBD";
+  const barB = dark ? "#6FD3CC" : "#0E9F9A";
 
   return (
     <section id="research" className="py-24 md:py-32 border-t border-line tint-hero scroll-mt-16" aria-label="Research and validation">
       <div className="mx-auto max-w-7xl px-5 md:px-8" ref={ref}>
         <SectionHead
-          index="12"
+          index="14"
           eyebrow="RESEARCH & VALIDATION"
           title={<>BUILT AROUND A<br /><span className="text-cyanx">REAL PROBLEM.</span></>}
           lede="Team Innovexa spoke with students, educators, parents, hobbyists, institutions and researchers — then shaped SynLab around what they heard. No raw responses or personal data here; just the patterns that guided the design."
@@ -65,33 +73,33 @@ export default function Research() {
         <div className="mt-6 grid md:grid-cols-2 xl:grid-cols-3 gap-4">
           <ChartCard title="HOW OFTEN PRACTICAL WORK HAPPENS" note="Very frequent 27.7% · Occasional 33.8% · Rare 27.7% · None 10.8%" insight="Most people do some practical work — the audience exists; access is the gap.">
             <ResponsiveContainer><BarChart data={SURVEY.usage} layout="vertical">
-              <XAxis type="number" hide domain={[0, 40]} /><YAxis type="category" dataKey="label" width={90} tick={{ fill: "#697078", fontSize: 11 }} />
-              <Tooltip contentStyle={tip} /><Bar dataKey="value" fill="#0C6FBD" radius={[0, 6, 6, 0]} isAnimationActive={false} />
+              <XAxis type="number" hide domain={[0, 40]} /><YAxis type="category" dataKey="label" width={90} tick={{ fill: tickFill, fontSize: 11 }} />
+              <Tooltip contentStyle={tip} /><Bar dataKey="value" fill={barA} radius={[0, 6, 6, 0]} isAnimationActive={false} />
             </BarChart></ResponsiveContainer>
           </ChartCard>
           <ChartCard title="HOW OFTEN DIFFICULTIES APPEAR" note="Often 13.8% + Sometimes 50.8% = 64.6% at least sometimes." insight="Difficulty is common, not exceptional — the experience needs rethinking.">
             <ResponsiveContainer><PieChart>
-              <Pie data={SURVEY.difficulty} dataKey="value" nameKey="label" innerRadius={45} outerRadius={75} paddingAngle={3} isAnimationActive={false} stroke="#fff" strokeWidth={2}>
-                {SURVEY.difficulty.map((_, i) => <Cell key={i} fill={["#0C6FBD", "#0E9F9A", "#E8A33D", "#E3E6EA"][i]} />)}
+              <Pie data={SURVEY.difficulty} dataKey="value" nameKey="label" innerRadius={45} outerRadius={75} paddingAngle={3} isAnimationActive={false} stroke={dark ? "#171C23" : "#fff"} strokeWidth={2}>
+                {SURVEY.difficulty.map((_, i) => <Cell key={i} fill={(dark ? ["#6FB7EC", "#6FD3CC", "#E9BE7C", "#2A323D"] : ["#0C6FBD", "#0E9F9A", "#E8A33D", "#E3E6EA"])[i]} />)}
               </Pie><Tooltip contentStyle={tip} />
             </PieChart></ResponsiveContainer>
           </ChartCard>
           <ChartCard title="ACCESS WHEN NEEDED" note="Only 16.9% easy access → 83.1% face some limitation." insight="The clearest case for portability: access fails far more than it works.">
             <ResponsiveContainer><BarChart data={SURVEY.access}>
               <XAxis dataKey="label" tick={false} /><YAxis hide domain={[0, 60]} /><Tooltip contentStyle={tip} />
-              <Bar dataKey="value" fill="#0C6FBD" radius={[6, 6, 0, 0]} isAnimationActive={false} />
+              <Bar dataKey="value" fill={barA} radius={[6, 6, 0, 0]} isAnimationActive={false} />
             </BarChart></ResponsiveContainer>
           </ChartCard>
           <ChartCard title="WHAT MAKES IT DIFFICULT?" note="Time 54.2% · equipment 50.8% · guidance 42.4% · safety 32.2% · outdated 32.2% (multi-select)." insight="Time, equipment and guidance lead — the three bets SynLab is designed around.">
             <ResponsiveContainer><BarChart data={SURVEY.causes} layout="vertical">
-              <XAxis type="number" hide /><YAxis type="category" dataKey="label" width={110} tick={{ fill: "#697078", fontSize: 11 }} />
-              <Tooltip contentStyle={tip} /><Bar dataKey="pct" fill="#0E9F9A" radius={[0, 6, 6, 0]} isAnimationActive={false} name="Share (%)" />
+              <XAxis type="number" hide /><YAxis type="category" dataKey="label" width={110} tick={{ fill: tickFill, fontSize: 11 }} />
+              <Tooltip contentStyle={tip} /><Bar dataKey="pct" fill={barB} radius={[0, 6, 6, 0]} isAnimationActive={false} name="Share (%)" />
             </BarChart></ResponsiveContainer>
           </ChartCard>
           <ChartCard title="OPENNESS TO BETTER SYSTEMS" note="Extremely helpful 66.2% + Helpful 29.2% = 95.4% positive." insight="Near-unanimous welcome — nobody rated a better system unhelpful.">
             <ResponsiveContainer><BarChart data={SURVEY.demand}>
               <XAxis dataKey="label" tick={false} /><YAxis hide domain={[0, 70]} /><Tooltip contentStyle={tip} />
-              <Bar dataKey="value" radius={[6, 6, 0, 0]} isAnimationActive={false}>{SURVEY.demand.map((_, i) => <Cell key={i} fill={i < 2 ? "#0C6FBD" : "#E3E6EA"} />)}</Bar>
+              <Bar dataKey="value" radius={[6, 6, 0, 0]} isAnimationActive={false}>{SURVEY.demand.map((_, i) => <Cell key={i} fill={i < 2 ? barA : (dark ? "#2A323D" : "#E3E6EA")} />)}</Bar>
             </BarChart></ResponsiveContainer>
           </ChartCard>
           <div className="card p-5 !bg-gradient-to-b !from-white !to-tint">

@@ -63,8 +63,9 @@ export default function WhatWouldYouExplore() {
     <section id="wonder" className="py-24 md:py-32 border-t border-line tint-white scroll-mt-16" aria-label="What would you explore?">
       <div className="mx-auto max-w-5xl px-5 md:px-8 text-center">
         <SectionHead
-          index="15"
+          index="19"
           eyebrow="IMAGINE"
+          align="center"
           title={<>WHAT WOULD <span className="text-cyanx">YOU EXPLORE?</span></>}
           lede="SynLab is built around questions. Pick one and imagine where the exploration could begin."
         />

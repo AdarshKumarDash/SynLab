@@ -7,17 +7,41 @@
 export const NAV_LINKS = [
   { label: "IDEA", href: "#idea" },
   { label: "WHY", href: "#why" },
-  { label: "SYNLAB", href: "#answer" },
   { label: "ONE", href: "#one" },
-  { label: "FOR YOU", href: "#audiences" },
-  { label: "DASHBOARD", href: "#dashboard" },
-  { label: "RESEARCH", href: "#research" },
-  { label: "FUTURE", href: "#future" },
+  { label: "3D", href: "#model3d" },
+  { label: "ROADMAP", href: "#roadmap" },
+  { label: "TECH", href: "#technology" },
+  { label: "DEMO", href: "#dashboard" },
   { label: "TEAM", href: "#team" },
+  { label: "CONTACT", href: "#contact" },
 ];
 
 export const DASHBOARD_URL = "https://synlab-demo-control-main.vercel.app";
-export const CONTACT_EMAIL = "m256622@dpsmiyapur.com";
+export const CONTACT_EMAIL = "adarsh.dps.2020@gmail.com";
+export const TINKERCAD_URL = "https://www.tinkercad.com/things/2VAXOjaCejo-synlab?sharecode=7J2dGjszm_MKz6V9eMmihf87SqzamsgAst7L3CKdQcA";
+
+export const CONTACTS = [
+  {
+    name: "Adarsh Kumar Dash",
+    role: "Co-founder · Team Innovexa",
+    email: "adarsh.dps.2020@gmail.com",
+    phone: "+91 73820 77192",
+    phoneHref: "+917382077192",
+  },
+  {
+    name: "Sharon Chakraborty",
+    role: "Co-founder · Team Innovexa",
+    email: "chakrabortysharon123@gmail.com",
+    phone: "+91 94330 27778",
+    phoneHref: "+919433027778",
+  },
+];
+
+export const ADARSH_LINKS = {
+  portfolio: "https://adarshkumardash.github.io/Portfolio/",
+  linkedin: "https://www.linkedin.com/in/adarsh-kumar-dash-5020873a3/",
+  github: "https://github.com/AdarshKumarDash",
+};
 
 // Visitor-framed barriers (source: team stakeholder study; percentages only).
 // WHERE / WHEN / HOW / SAFETY / ACCESS framing for public readability.
@@ -140,8 +164,58 @@ export const PRO_CAPABILITIES = [
 ];
 
 export const TEAM = [
-  { name: "Adarsh Kumar Dash", note: "Team Innovexa" },
-  { name: "Sharon Chakraborty", note: "Team Innovexa" },
+  {
+    name: "Adarsh Kumar Dash",
+    note: "CO-FOUNDER",
+    body: "Co-founder of Innovexa and part of the team shaping SynLab from research and concept development to prototyping and product direction.",
+    links: true,
+  },
+  {
+    name: "Sharon Chakraborty",
+    note: "CO-FOUNDER",
+    body: "Co-founder of Team Innovexa, working across research, concept development and prototyping to bring SynLab to life.",
+    links: false,
+  },
+];
+
+// ONE → PRO → CORE roadmap — maturity is explicit, future stays conceptual.
+export const ROADMAP = [
+  {
+    id: "one",
+    name: "SYNLAB ONE",
+    sub: "THE BASE MODEL",
+    badge: "CURRENT · BASE MODEL",
+    badgeShort: "CURRENT",
+    stage: "TODAY",
+    status: "CURRENT / BASE-MODEL PROTOTYPE",
+    body: "SynLab ONE is the first tangible implementation of the portable laboratory concept — a modular, hands-on platform designed to bring practical science closer to the learner.",
+    points: ["Base-model prototype", "Portable", "Modular", "Hands-on", "Guided", "Demonstrable and testable"],
+    href: "#one",
+  },
+  {
+    id: "pro",
+    name: "SYNLAB PRO",
+    sub: "THE ADVANCED DIRECTION",
+    badge: "FUTURE · PROPOSED",
+    badgeShort: "FUTURE",
+    stage: "NEXT",
+    status: "FUTURE / PROPOSED",
+    body: "SynLab PRO is envisioned as the advanced research-oriented direction of the platform, extending the portable laboratory concept toward deeper scientific investigation and more sophisticated measurement capabilities.",
+    points: ["Advanced investigation", "Broader scientific measurements", "Environmental analysis", "Biological exploration", "Intelligent assistance", "Expandable modules"],
+    href: "#future",
+  },
+  {
+    id: "core",
+    name: "SYNLAB CORE",
+    sub: "THE INSTITUTIONAL DIRECTION",
+    badge: "FUTURE · VISION",
+    badgeShort: "VISION",
+    stage: "BROADER FUTURE",
+    status: "FUTURE / PROPOSED",
+    body: "SynLab CORE is envisioned as the broader institutional direction — a foundation for bringing SynLab-style practical learning into schools, science programs and larger learning environments.",
+    points: ["Institutional learning", "Multi-user environments", "Scalable deployment", "Shared practical learning", "Modular expansion", "Connected learning ecosystem"],
+    href: "#roadmap",
+  },
 ];
 
 // ─── Public presentation helpers (visitor-safe, source-supported) ──

@@ -9,7 +9,7 @@ export default function Comparison() {
     <section id="compare" className="py-24 md:py-32 border-t border-line tint-grey scroll-mt-16" aria-label="SynLab in context">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="12"
+          index="15"
           eyebrow="IN CONTEXT"
           title={<>WHY NOT JUST A<br />TRADITIONAL <span className="text-cyanx">LAB?</span></>}
           lede="Every way of learning science has strengths. SynLab isn't here to replace them — it's designed to complement the laboratory ecosystem."

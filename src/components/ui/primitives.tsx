@@ -17,11 +17,12 @@ export function Reveal({ children, delay = 0, y = 28, className = "" }: { childr
   );
 }
 
-export function SectionHead({ index, eyebrow, title, lede }: { index: string; eyebrow: string; title: React.ReactNode; lede?: string }) {
+export function SectionHead({ index, eyebrow, title, lede, align = "left" }: { index: string; eyebrow: string; title: React.ReactNode; lede?: string; align?: "left" | "center" }) {
+  const centered = align === "center";
   return (
-    <div className="max-w-5xl">
+    <div className={`max-w-5xl ${centered ? "mx-auto text-center" : ""}`}>
       <Reveal>
-        <div className="flex items-center gap-3 text-[12px] font-semibold tracking-[0.18em] text-cyanx font-grotesk">
+        <div className={`flex items-center gap-3 text-[12px] font-semibold tracking-[0.18em] text-cyanx font-grotesk ${centered ? "justify-center" : ""}`}>
           <span className="grid place-items-center min-w-9 h-9 px-2 rounded-full bg-cyanx/10 border border-cyanx/25 text-cyanx text-[12px]">{index}</span>
           <span className="h-px w-10 bg-cyanx/40" aria-hidden />
           <span className="text-body">{eyebrow}</span>
@@ -32,7 +33,7 @@ export function SectionHead({ index, eyebrow, title, lede }: { index: string; ey
       </Reveal>
       {lede ? (
         <Reveal delay={0.16}>
-          <p className="mt-4 max-w-2xl text-body text-base md:text-lg leading-relaxed">{lede}</p>
+          <p className={`mt-4 max-w-2xl text-body text-base md:text-lg leading-relaxed ${centered ? "mx-auto" : ""}`}>{lede}</p>
         </Reveal>
       ) : null}
     </div>

@@ -7,7 +7,7 @@ export default function UseCases() {
     <section id="usecases" className="py-24 md:py-32 border-t border-line tint-blue scroll-mt-16" aria-label="Where SynLab could go">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="09"
+          index="11"
           eyebrow="USE CASES"
           title={<>WHERE COULD<br />SYNLAB <span className="text-cyanx">GO?</span></>}
           lede="Not promises — possibilities. Places where a portable, guided laboratory could open new doors for practical learning."

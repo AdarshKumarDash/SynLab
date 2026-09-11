@@ -14,7 +14,7 @@ export default function Technology() {
     <section id="technology" className="py-24 md:py-32 border-t border-line tint-blue scroll-mt-16" aria-label="Technology behind the experience">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="10"
+          index="12"
           eyebrow="TECHNOLOGY"
           title={<>THE TECHNOLOGY<br />BEHIND THE <span className="text-cyanx">EXPERIENCE.</span></>}
           lede="Enough to trust the concept — never enough to copy it. Four ideas work together so learners can focus on science, not setup."

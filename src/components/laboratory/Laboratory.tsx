@@ -42,7 +42,7 @@ export default function Laboratory() {
         <div className="mt-8 grid lg:grid-cols-[1.4fr_1fr] gap-6">
           <div className="card relative h-[440px] md:h-[520px] overflow-hidden flex items-center justify-center !bg-gradient-to-b !from-white !to-cream">
             <div className="absolute inset-0 sci-grid-fine opacity-70" aria-hidden />
-            <div className="relative w-[300px] h-[300px]" role="img" aria-label={exploded ? "Conceptual exploded view of the SynLab experience" : "SynLab portable lab concept"}>
+            <div className="relative w-[300px] h-[300px]" role="group" aria-label={exploded ? "Conceptual exploded view of the SynLab experience — select an area" : "SynLab portable lab concept — select an area"}>
               {LAB_ZONES.map((z) => {
                 const cfg = POS[z.id];
                 const t = exploded ? cfg.exploded : cfg.assembled;
@@ -57,8 +57,8 @@ export default function Laboratory() {
                     animate={{ x: reduce ? 0 : t.x, y: reduce ? 0 : t.y, scale: isSel ? 1.07 : 1 }}
                     transition={{ type: "spring", stiffness: 90, damping: 16 }}
                     whileHover={reduce ? undefined : { scale: isSel ? 1.07 : 1.03 }}
-                    className={`absolute left-1/2 top-1/2 -ml-20 md:-ml-28 -mt-16 ${cfg.w} ${cfg.h} rounded-card border text-left p-3 transition-shadow duration-300
-                      ${isSel ? "border-cyanx bg-white z-10 ring-2 ring-cyanx/25 shadow-lift" : "border-line bg-white/95 shadow-card hover:border-cyanx/60"}`}
+                    className={`absolute left-1/2 top-1/2 -ml-20 md:-ml-28 -mt-16 ${cfg.w} ${cfg.h} rounded-card border text-left p-3 transition-all duration-300 focus-visible:outline-2
+                      ${isSel ? "border-cyanx bg-white z-10 ring-2 ring-cyanx/25 shadow-lift -translate-y-0.5" : "border-line bg-white/95 shadow-card hover:border-cyanx/60 hover:-translate-y-0.5 hover:shadow-lift"}`}
                   >
                     <span className="font-grotesk text-[10px] font-bold tracking-[0.12em] text-cyanx">{z.name}</span>
                     <span className="block text-[11px] text-muted mt-1">{z.tag}</span>

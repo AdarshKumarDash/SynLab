@@ -8,6 +8,8 @@ import Experience from "@/components/experience/Experience";
 import Story from "@/components/story/Story";
 import SynLabOne from "@/components/technology/SynLabOne";
 import Laboratory from "@/components/laboratory/Laboratory";
+import Model3D from "@/components/model3d/Model3D";
+import Roadmap from "@/components/roadmap/Roadmap";
 import Audiences from "@/components/audiences/Audiences";
 import UseCases from "@/components/usecases/UseCases";
 import Technology from "@/components/technology/Technology";
@@ -18,7 +20,9 @@ import Future from "@/components/future/Future";
 import Impact from "@/components/impact/Impact";
 import Team from "@/components/team/Team";
 import WhatWouldYouExplore from "@/components/explore/WhatWouldYouExplore";
+import Contact from "@/components/contact/Contact";
 import Finale from "@/components/team/Finale";
+import Footer from "@/components/footer/Footer";
 
 export default function Page() {
   return (
@@ -34,6 +38,8 @@ export default function Page() {
         <Story />
         <SynLabOne />
         <Laboratory />
+        <Model3D />
+        <Roadmap />
         <Audiences />
         <UseCases />
         <Technology />
@@ -44,8 +50,10 @@ export default function Page() {
         <Impact />
         <Team />
         <WhatWouldYouExplore />
+        <Contact />
         <Finale />
       </main>
+      <Footer />
     </>
   );
 }

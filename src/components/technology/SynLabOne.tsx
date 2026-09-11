@@ -80,16 +80,17 @@ export default function SynLabOne() {
           index="06"
           eyebrow="SYNLAB ONE · THE FIRST STEP"
           title={<>MEET SYNLAB <span className="text-cyanx">ONE.</span></>}
-          lede="The base-model prototype — proof that a portable, modular laboratory can feel like one coherent experience, not a box of parts."
+          lede="SynLab ONE is the first tangible implementation of the portable laboratory concept — a modular, hands-on platform designed to bring practical science closer to the learner."
         />
         <motion.div
           initial={false}
           animate={{ opacity: inView ? 1 : 0.4, y: inView ? 0 : 12 }}
           transition={{ duration: 0.7 }}
-          className="mt-6 inline-flex flex-wrap items-center gap-2"
+          className="mt-6 flex flex-wrap items-center gap-2"
         >
-          <span className="font-grotesk text-[12px] font-bold tracking-[0.10em] border border-cyanx/40 text-cyanx px-4 py-2 rounded-full bg-white shadow-card">WORKING PROTOTYPE · BASE MODEL</span>
-          <span className="text-[13px] text-muted font-medium">What it is — not how to build it.</span>
+          <span className="font-grotesk text-[12px] font-bold tracking-[0.10em] bg-cyanx text-white px-4 py-2 rounded-full shadow-card">CURRENT · BASE MODEL</span>
+          <span className="font-grotesk text-[12px] font-bold tracking-[0.10em] border border-cyanx/40 text-cyanx px-4 py-2 rounded-full bg-white shadow-card">PROTOTYPE</span>
+          <span className="text-[13px] text-muted font-medium">An idea became something tangible. What it is — not how to build it.</span>
         </motion.div>
 
         {/* Product-reveal moment */}
@@ -127,26 +128,35 @@ export default function SynLabOne() {
             </ul>
           </div>
         </div>
-        <Takeaway>ONE turns the idea into something tangible and testable — now explore it visually, then see who it could help.</Takeaway>
+        <Takeaway>ONE turns the idea into something tangible and testable — now explore it visually, then see where it could go.</Takeaway>
         <Reveal className="mt-8 flex flex-wrap gap-4">
           <a href="#lab" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4 pressable">SEE THE CONCEPT ↓</a>
-          <a href="#audiences" className="btn-primary inline-block font-grotesk text-[13px] font-bold tracking-[0.08em] px-7 py-4 pressable">WHO IS IT FOR? →</a>
+          <a href="#model3d" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4 pressable">SEE IN 3D →</a>
+          <a href="#roadmap" className="btn-primary inline-block font-grotesk text-[13px] font-bold tracking-[0.08em] px-7 py-4 pressable">THE ROADMAP →</a>
         </Reveal>
-        {/* TODAY → NEXT interactive transition */}
-        <Reveal className="mt-6 grid sm:grid-cols-[1fr_auto_1fr] gap-3 items-stretch" aria-label="Today and next">
+        {/* TODAY → NEXT → BROADER FUTURE interactive transition */}
+        <Reveal className="mt-6 grid sm:grid-cols-[1fr_auto_1fr_auto_1fr] gap-3 items-stretch" aria-label="Today, next and broader future">
           <div className="card p-5 !bg-gradient-to-r !from-tint !to-white card-hover group">
             <p className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-cyanx">TODAY · SYNLAB ONE</p>
             <p className="text-[13px] text-body mt-1.5 leading-relaxed">Base-model prototype — tangible, demonstrable and testable.</p>
             <span className="mt-2 inline-block text-[11px] font-grotesk font-bold text-ink">You are here ●</span>
           </div>
           <div className="hidden sm:grid place-items-center text-muted" aria-hidden>
-            <span className="grid place-items-center w-9 h-9 rounded-full border border-line bg-white font-bold">↓</span>
+            <span className="grid place-items-center w-9 h-9 rounded-full border border-line bg-white font-bold">→</span>
           </div>
           <a href="#future" className="card p-5 card-hover block group relative overflow-hidden">
             <span className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-cyanx/0 via-cyanx/60 to-cyanx/0 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden />
             <p className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-muted group-hover:text-cyanx transition-colors">NEXT · SYNLAB PRO <ArrowRight size={12} className="inline group-hover:translate-x-1 transition-transform" /></p>
             <p className="text-[13px] text-body mt-1.5 leading-relaxed">Future / proposed direction — a vision, not a current product.</p>
-            <span className="mt-2 inline-block text-[11px] font-grotesk font-semibold text-muted border border-dashed border-line rounded-full px-2.5 py-1">FUTURE / PROPOSED — VISION, NOT A PRODUCT</span>
+            <span className="mt-2 inline-block text-[11px] font-grotesk font-semibold text-muted border border-dashed border-line rounded-full px-2.5 py-1">FUTURE / PROPOSED</span>
+          </a>
+          <div className="hidden sm:grid place-items-center text-muted" aria-hidden>
+            <span className="grid place-items-center w-9 h-9 rounded-full border border-dashed border-line bg-white font-bold">→</span>
+          </div>
+          <a href="#roadmap" className="card p-5 card-hover block group relative overflow-hidden !border-dashed">
+            <p className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-muted group-hover:text-cyanx transition-colors">BROADER FUTURE · CORE <ArrowRight size={12} className="inline group-hover:translate-x-1 transition-transform" /></p>
+            <p className="text-[13px] text-body mt-1.5 leading-relaxed">Institutional direction — a vision for wider learning environments.</p>
+            <span className="mt-2 inline-block text-[11px] font-grotesk font-semibold text-muted border border-dashed border-line rounded-full px-2.5 py-1">FUTURE / VISION</span>
           </a>
         </Reveal>
       </div>

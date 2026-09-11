@@ -18,7 +18,7 @@ export default function Audiences() {
     <section id="audiences" className="py-24 md:py-32 border-t border-line tint-white scroll-mt-16" aria-label="Who SynLab is for">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="08"
+          index="10"
           eyebrow="WHO IS IT FOR?"
           title={<>SCIENCE LOOKS DIFFERENT<br />FOR <span className="text-cyanx">EVERYONE.</span></>}
           lede="SynLab is designed as a flexible concept — the same portable idea, shaped to different needs. Find yourself below."

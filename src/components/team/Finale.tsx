@@ -1,8 +1,8 @@
 "use client";
-import { DASHBOARD_URL, CONTACT_EMAIL } from "@/data/content";
+import { CONTACT_EMAIL } from "@/data/content";
 import { Reveal, useInViewOnce } from "../ui/primitives";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Mail, MessagesSquare } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 
 const GROUPS = [
   { t: "Students & clubs", b: "Try the concept, ask questions, imagine what you'd explore.", verb: "Explore" },
@@ -42,10 +42,9 @@ function DriftShapes({ on }: { on: boolean }) {
 export default function Finale() {
   const { ref, inView } = useInViewOnce<HTMLDivElement>();
   const reduce = useReducedMotion();
-  const lines = ["The lab shouldn't be", "a place.", "It should be", "a possibility."];
 
   return (
-    <section id="contact" className="relative py-28 md:py-40 border-t border-line overflow-hidden tint-hero scroll-mt-16" aria-label="Collaboration and closing">
+    <section id="finale" className="relative py-28 md:py-40 border-t border-line overflow-hidden tint-hero scroll-mt-16" aria-label="Final call to action">
       <div ref={ref} className="absolute inset-0" aria-hidden />
       <div className="pointer-events-none absolute inset-0 dot-grid opacity-50" aria-hidden />
       <div
@@ -57,13 +56,12 @@ export default function Finale() {
 
       <div className="relative mx-auto max-w-5xl px-5 md:px-8 text-center">
         <Reveal>
-          <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">16 · LET&apos;S EXPLORE WHAT&apos;S POSSIBLE</p>
+          <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">21 · WHERE THIS LEADS</p>
           <h2 className="font-grotesk font-bold tracking-tight text-4xl md:text-6xl mt-4 text-ink leading-[1.05] md:leading-[1.05]">
-            Curious? Teaching?<br />Building the future <span className="text-cyanx">with us?</span>
+            THE LAB SHOULDN&apos;T HAVE<br />TO STAY IN <span className="text-cyanx">ONE PLACE.</span>
           </h2>
           <p className="mt-5 max-w-2xl mx-auto text-body text-base md:text-lg leading-relaxed">
-            Whether you&apos;re a student, an educator, a school or simply someone who loves science —
-            we&apos;d love to hear how portable practical learning could help you.
+            Let&apos;s make practical science easier to reach.
           </p>
         </Reveal>
         <Reveal delay={0.12}>
@@ -81,29 +79,11 @@ export default function Finale() {
         </Reveal>
         <Reveal delay={0.2} className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="#top" className="btn-primary font-grotesk text-[13px] tracking-[0.08em] px-8 py-4 font-bold inline-flex items-center gap-2 pressable">EXPLORE SYNLAB <ArrowUpRight size={15} /></a>
-          <a href={DASHBOARD_URL} target="_blank" rel="noreferrer" className="btn-ghost font-grotesk text-[13px] tracking-[0.08em] px-8 py-4 font-semibold inline-flex items-center gap-2 pressable">Try the demo <ArrowUpRight size={15} /></a>
+          <a href="#contact" className="btn-accent font-grotesk text-[13px] tracking-[0.08em] px-8 py-4 font-bold inline-flex items-center gap-2 pressable">CONTACT THE TEAM →</a>
           <a href={`mailto:${CONTACT_EMAIL}?subject=SynLab%20—%20Let's%20start%20a%20conversation`} className="btn-ghost font-grotesk text-[13px] tracking-[0.08em] px-8 py-4 font-semibold inline-flex items-center gap-2 pressable"><Mail size={15} /> Start a conversation</a>
         </Reveal>
-        <p className="mt-4 text-[12px] text-muted flex items-center justify-center gap-1.5"><MessagesSquare size={13} /> No carts, no checkout — just a conversation about what&apos;s possible.</p>
+        <p className="mt-4 text-[12px] text-muted">Public concept website — implementation details are intentionally not shared.</p>
 
-        {/* "Lab is a possibility" — line-by-line reveal */}
-        <div className="mt-16" aria-label="The lab shouldn't be a place. It should be a possibility.">
-          <p className="font-editorial italic leading-[1.08] text-5xl md:text-7xl text-ink">
-            {lines.map((line, i) => (
-              <motion.span
-                key={line}
-                className={`block ${i >= 2 ? "text-cyanx" : ""}`}
-                initial={{ opacity: 0, y: reduce ? 0 : 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.7, delay: i * 0.14, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {line}
-                {i === 1 || i === 3 ? <br /> : null}
-              </motion.span>
-            ))}
-          </p>
-        </div>
         <Reveal delay={0.1}>
           <motion.div
             initial={{ opacity: 0, scale: reduce ? 1 : 0.94 }}
@@ -111,15 +91,11 @@ export default function Finale() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="font-grotesk font-bold tracking-tight text-2xl mt-10 text-ink">SynLab</p>
+            <p className="font-grotesk font-bold tracking-tight text-2xl mt-14 text-ink">SynLab</p>
             <p className="text-body mt-2 text-lg">Bringing the Lab to Every Learner</p>
             <p className="text-[11px] font-semibold tracking-[0.18em] font-grotesk text-muted mt-2">TEAM INNOVEXA</p>
           </motion.div>
         </Reveal>
-        <footer className="mt-16 border-t border-line pt-6 text-[11px] text-muted leading-relaxed">
-          <p>SynLab — The Portable Lab · Team Innovexa. Research: a small directional stakeholder study. Dashboard on this site is simulated. SynLab PRO is a future vision, not a current product.</p>
-          <p className="mt-2">Public concept website — implementation details are intentionally not shared. Background reading: <a className="underline hover:text-cyanx" href="https://www.unesco.org/en/stem" target="_blank" rel="noreferrer">UNESCO STEM</a> · <a className="underline hover:text-cyanx" href="https://www.unesco.org/gem-report/en/publication/technology" target="_blank" rel="noreferrer">GEM Report</a> · <a className="underline hover:text-cyanx" href="https://edu.rsc.org/analysis/practical-advice-for-practical-work/3008114.article" target="_blank" rel="noreferrer">RSC Practical Work</a></p>
-        </footer>
       </div>
     </section>
   );

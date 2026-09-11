@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { DASHBOARD_URL, DASHBOARD_METRICS, READING_GUIDE } from "@/data/content";
 import { Reveal, SectionHead, Takeaway, MethodNote, useInViewOnce } from "../ui/primitives";
+import { useTheme } from "../theme/ThemeProvider";
 import { Activity, Droplets, Eye, FlaskConical, Lightbulb, Thermometer, Wind, Waves, ExternalLink, Play } from "lucide-react";
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
@@ -38,6 +39,8 @@ function useSimulatedStream(active: boolean, hover: boolean) {
 export default function Dashboard() {
   const { ref, inView } = useInViewOnce<HTMLDivElement>();
   const [hover, setHover] = useState(false);
+  const { theme } = useTheme();
+  const dark = theme === "dark";
   const s = useSimulatedStream(inView, hover);
   const cards = [
     { icon: Thermometer, label: "CONDITIONS", value: `${s.temp.toFixed(1)} °C`, sub: "Sensing layer · simulated" },
@@ -50,7 +53,7 @@ export default function Dashboard() {
   return (
     <section id="dashboard" className="py-24 md:py-32 border-t border-line tint-deep scroll-mt-16" aria-label="Dashboard preview">
       <div className="mx-auto max-w-7xl px-5 md:px-8" ref={ref}>
-        <SectionHead index="11" eyebrow="THE DIGITAL SIDE · SIMULATION MODE" title={<>THE LAB, <span className="text-cyanx">ON SCREEN.</span></>} lede="The dashboard concept is the digital layer of SynLab — a calm screen for observing readings and following guided activities. What you see here is a simulation of that idea." />
+        <SectionHead index="13" eyebrow="THE DIGITAL SIDE · SIMULATION MODE" title={<>THE LAB, <span className="text-cyanx">ON SCREEN.</span></>} lede="The dashboard concept is the digital layer of SynLab — a calm screen for observing readings and following guided activities. What you see here is a simulation of that idea." />
         <Reveal className="mt-6 flex flex-wrap items-center gap-2">
           <span className="inline-flex items-center gap-2 text-[12px] font-grotesk font-semibold tracking-[0.10em] border border-[#F0D9A8] text-[#8a5a12] px-4 py-2 rounded-full bg-[#FDF3E2]">
             <span className={`w-2 h-2 rounded-full bg-sunny ${hover && !s.reduced ? "animate-ping" : ""}`} aria-hidden /> SIMULATION MODE — DEMO VALUES ONLY
@@ -89,7 +92,7 @@ export default function Dashboard() {
             <div className="bg-white p-5 md:col-span-2">
               <p className="font-grotesk text-[12px] font-semibold tracking-[0.08em] text-muted flex items-center gap-2"><Activity size={14} className="text-cyanx" /> ACTIVITY TREND · CONDITIONS OVER TIME (SIMULATED)</p>
               <div className="h-56 mt-4 rounded-card bg-paper border border-line p-2" role="img" aria-label="Simulated illustration of activity trends over time">
-                <DashboardChart series={s.series} />
+                <DashboardChart series={s.series} dark={dark} />
               </div>
               <p className="mt-2 text-[11px] text-muted">Illustrative trends only — the concept is about following change, not these numbers.</p>
               <div className="mt-4 grid grid-cols-2 gap-3 text-xs">
@@ -143,16 +146,16 @@ export default function Dashboard() {
   );
 }
 
-function DashboardChart({ series }: { series: { i: number; conditions: number; observation: number }[] }) {
+function DashboardChart({ series, dark }: { series: { i: number; conditions: number; observation: number }[]; dark?: boolean }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart data={series}>
         <XAxis dataKey="i" hide />
         <YAxis hide domain={["auto", "auto"]} />
-        <Tooltip contentStyle={{ background: "#FFFFFF", border: "1px solid #E3E6EA", borderRadius: 12, fontSize: 12, color: "#17191C" }} />
-        <Legend wrapperStyle={{ fontSize: 11, color: "#697078" }} />
-        <Line type="monotone" dataKey="conditions" stroke="#0C6FBD" strokeWidth={2.5} dot={false} isAnimationActive={false} name="Conditions trend" />
-        <Line type="monotone" dataKey="observation" stroke="#0E9F9A" strokeWidth={2} dot={false} isAnimationActive={false} name="Observation trend" />
+        <Tooltip contentStyle={{ background: dark ? "#171C23" : "#FFFFFF", border: dark ? "1px solid rgba(255,255,255,0.12)" : "1px solid #E3E6EA", borderRadius: 12, fontSize: 12, color: dark ? "#EDEFF3" : "#17191C" }} labelStyle={{ color: dark ? "#8F97A1" : "#697078" }} />
+        <Legend wrapperStyle={{ fontSize: 11, color: dark ? "#B7BEC7" : "#697078" }} />
+        <Line type="monotone" dataKey="conditions" stroke={dark ? "#6FB7EC" : "#0C6FBD"} strokeWidth={2.5} dot={false} isAnimationActive={false} name="Conditions trend" />
+        <Line type="monotone" dataKey="observation" stroke={dark ? "#6FD3CC" : "#0E9F9A"} strokeWidth={2} dot={false} isAnimationActive={false} name="Observation trend" />
       </LineChart>
     </ResponsiveContainer>
   );

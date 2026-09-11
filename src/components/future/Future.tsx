@@ -15,12 +15,15 @@ export default function Future() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_50%_15%,rgba(12,111,189,0.12),transparent_70%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="14"
+          index="16"
           eyebrow="SYNLAB PRO · THE NEXT CHAPTER"
           title={<>WHERE COULD THIS <span className="text-cyanx text-glow">GO NEXT?</span></>}
-          lede="SynLab PRO is a future vision — where a proven portable idea could grow toward deeper investigation. Vision only; nothing here is a current specification."
+          lede="SynLab PRO is envisioned as the advanced research-oriented direction of the platform, extending the portable laboratory concept toward deeper scientific investigation and more sophisticated measurement capabilities. Everything here is future / proposed — vision, not current capability."
         />
-        <Reveal className="mt-6 inline-block font-grotesk text-[12px] font-bold tracking-[0.10em] border border-cyanx/40 text-cyanx px-4 py-2 rounded-full bg-white shadow-card">FUTURE / PROPOSED — VISION, NOT A PRODUCT</Reveal>
+        <Reveal className="mt-6 flex flex-wrap items-center gap-2">
+          <span className="inline-block font-grotesk text-[12px] font-bold tracking-[0.10em] bg-sunny/15 text-sunny border border-[#F0D9A8] px-4 py-2 rounded-full">FUTURE / PROPOSED — VISION, NOT A PRODUCT</span>
+          <a href="#roadmap" className="font-grotesk text-[12px] font-bold tracking-[0.08em] text-body hover:text-cyanx border border-line bg-white rounded-full px-4 py-2 transition-colors">← BACK TO ROADMAP</a>
+        </Reveal>
         <Reveal className="card mt-6 overflow-x-auto !p-0">
           <table className="w-full text-sm min-w-[640px]">
             <thead><tr className="font-grotesk text-[11px] font-bold tracking-[0.1em] text-muted border-b border-line bg-paper">
@@ -65,8 +68,16 @@ export default function Future() {
           <figcaption className="text-[11px] text-muted mt-3">Early concept sketch from Team Innovexa — an illustration of ambition, not a product render or blueprint.</figcaption>
         </figure>
         <Takeaway>ONE turns the portable-science idea into something tangible and testable. PRO imagines how far it could go — broader questions, deeper insight, more learners reached.</Takeaway>
+        <Reveal className="mt-6 card p-5 md:p-6 !border-dashed flex flex-col md:flex-row md:items-center gap-4 justify-between">
+          <div>
+            <p className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-muted">BEYOND PRO · SYNLAB CORE — FUTURE / VISION</p>
+            <p className="text-sm text-body mt-1.5 leading-relaxed max-w-xl">SynLab CORE is envisioned as the broader institutional direction — bringing SynLab-style practical learning into schools, science programs and larger learning environments.</p>
+          </div>
+          <a href="#roadmap" className="btn-ghost shrink-0 font-grotesk text-[12px] font-bold tracking-[0.08em] px-6 py-3.5 pressable text-center">READ THE CORE DIRECTION →</a>
+        </Reveal>
         <MethodNote>{READING_GUIDE.pro}</MethodNote>
-        <Reveal className="mt-8">
+        <Reveal className="mt-8 flex flex-wrap gap-4">
+          <a href="#roadmap" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4">BACK TO ROADMAP ↑</a>
           <a href="#impact" className="btn-ghost inline-block font-grotesk text-[13px] font-semibold tracking-[0.08em] px-7 py-4">THE BIGGER PICTURE ↓</a>
         </Reveal>
       </div>

@@ -28,9 +28,13 @@ export default function Hero() {
             SynLab is a <strong className="text-ink font-semibold">portable, modular laboratory concept</strong> designed
             to make practical science learning more accessible, flexible and approachable — beyond fixed rooms and rigid schedules.
           </motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.46, duration: 0.8 }} className="mt-3 font-grotesk text-[13px] font-semibold tracking-[0.08em] text-muted">
+            One idea. One portable platform. Many possibilities.
+          </motion.p>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-8 flex flex-wrap gap-4">
             <a href="#idea" className="btn-primary font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-bold pressable">EXPLORE SYNLAB →</a>
-            <a href="#story" className="btn-ghost font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-semibold pressable">OUR STORY</a>
+            <a href="#one" className="btn-accent font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-bold pressable">MEET ONE</a>
+            <a href="#model3d" className="btn-ghost font-grotesk text-[13px] tracking-[0.08em] px-7 py-4 font-semibold pressable">EXPLORE THE 3D MODEL</a>
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.62 }} className="mt-5">
             <a
@@ -68,7 +72,7 @@ export default function Hero() {
       </div>
       <div className="mx-auto max-w-7xl px-5 md:px-8 pb-8 w-full">
         <nav aria-label="Start the journey" className="flex flex-wrap gap-2 mb-5">
-          {[["The idea", "#idea"], ["Why it exists", "#why"], ["The answer", "#answer"], ["Who it's for", "#audiences"], ["The prototype", "#one"], ["What's next", "#future"]].map(([label, href]) => (
+          {[["The idea", "#idea"], ["Why it exists", "#why"], ["Meet ONE", "#one"], ["See in 3D", "#model3d"], ["Roadmap", "#roadmap"], ["What's next", "#future"]].map(([label, href]) => (
             <a key={href} href={href} className="font-grotesk text-[11px] font-semibold tracking-[0.08em] px-3.5 py-2 rounded-full border border-line bg-white text-body hover:border-cyanx hover:text-cyanx transition">{label.toUpperCase()}</a>
           ))}
         </nav>

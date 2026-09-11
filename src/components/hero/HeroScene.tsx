@@ -33,10 +33,25 @@ export default function HeroScene() {
     let running = true;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
 
-    type P = { bx: number; by: number; r: number; hue: string; ph: number; sp: number; depth: number };
+    // Theme-aware palette — the canvas follows the site's light/dark theme
+    // (toggled via the `dark` class on <html>) instead of glowing white at night.
+    let isDark =
+      typeof document !== "undefined" &&
+      document.documentElement.classList.contains("dark");
+    const themeOb =
+      typeof MutationObserver !== "undefined"
+        ? new MutationObserver(() => {
+            isDark = document.documentElement.classList.contains("dark");
+            if (reduced) drawFrame(performance.now());
+          })
+        : null;
+    themeOb?.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    type P = { bx: number; by: number; r: number; ci: number; ph: number; sp: number; depth: number };
     let parts: P[] = [];
 
-    const COLORS = ["#0C6FBD", "#0E9F9A", "#E8A33D", "#5B7FA6"];
+    const LIGHT_COLORS = ["#0C6FBD", "#0E9F9A", "#E8A33D", "#5B7FA6"];
+    const DARK_COLORS = ["#6FB7EC", "#6FD3CC", "#E9BE7C", "#8FA9C4"];
 
     function resize() {
       const rect = canvas!.getBoundingClientRect();
@@ -54,7 +69,7 @@ export default function HeroScene() {
         bx: Math.random() * w,
         by: Math.random() * h,
         r: 1 + Math.random() * 2.2,
-        hue: COLORS[i % COLORS.length],
+        ci: i % LIGHT_COLORS.length,
         ph: Math.random() * Math.PI * 2,
         sp: 0.3 + Math.random() * 0.7,
         depth: 0.3 + Math.random() * 0.7, // parallax depth
@@ -99,12 +114,19 @@ export default function HeroScene() {
       ctx.clearRect(0, 0, w, h);
       const cxp = w / 2 + cx * 8;
       const cyp = h / 2 + cy * 8;
+      const COLORS = isDark ? DARK_COLORS : LIGHT_COLORS;
 
       // Soft central glow — abstract "lab idea", not a device render.
       const glow = ctx.createRadialGradient(cxp, cyp, 0, cxp, cyp, Math.min(w, h) * 0.42);
-      glow.addColorStop(0, "rgba(12,111,189,0.10)");
-      glow.addColorStop(0.6, "rgba(14,159,154,0.05)");
-      glow.addColorStop(1, "rgba(12,111,189,0)");
+      if (isDark) {
+        glow.addColorStop(0, "rgba(77,163,230,0.14)");
+        glow.addColorStop(0.6, "rgba(111,211,204,0.06)");
+        glow.addColorStop(1, "rgba(77,163,230,0)");
+      } else {
+        glow.addColorStop(0, "rgba(12,111,189,0.10)");
+        glow.addColorStop(0.6, "rgba(14,159,154,0.05)");
+        glow.addColorStop(1, "rgba(12,111,189,0)");
+      }
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, w, h);
 
@@ -112,33 +134,33 @@ export default function HeroScene() {
       ctx.save();
       ctx.translate(cxp, cyp);
       // Main soft form
-      ctx.fillStyle = "rgba(255,255,255,0.92)";
-      ctx.strokeStyle = "rgba(12,111,189,0.28)";
+      ctx.fillStyle = isDark ? "rgba(28,35,45,0.96)" : "rgba(255,255,255,0.92)";
+      ctx.strokeStyle = isDark ? "rgba(111,183,236,0.45)" : "rgba(12,111,189,0.28)";
       ctx.lineWidth = 1.2;
       roundRect(ctx, -72, -52, 144, 104, 26);
       ctx.fill();
       ctx.stroke();
       // Inner accent bar (abstract, not a sensor strip)
-      ctx.fillStyle = "rgba(12,111,189,0.75)";
+      ctx.fillStyle = isDark ? "rgba(111,183,236,0.9)" : "rgba(12,111,189,0.75)";
       roundRect(ctx, -52, -42, 104, 7, 4);
       ctx.fill();
       // Secondary soft card
-      ctx.fillStyle = "rgba(244,245,242,0.95)";
-      ctx.strokeStyle = "rgba(23,25,28,0.10)";
+      ctx.fillStyle = isDark ? "rgba(20,26,33,0.96)" : "rgba(244,245,242,0.95)";
+      ctx.strokeStyle = isDark ? "rgba(255,255,255,0.12)" : "rgba(23,25,28,0.10)";
       ctx.lineWidth = 1;
       roundRect(ctx, -52, -24, 64, 62, 14);
       ctx.fill();
       ctx.stroke();
-      ctx.fillStyle = "rgba(14,159,154,0.85)";
+      ctx.fillStyle = isDark ? "rgba(95,211,203,0.9)" : "rgba(14,159,154,0.85)";
       ctx.beginPath();
       ctx.arc(28, 8, 14 + Math.sin(t * 0.0012) * 1.5, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = "rgba(232,163,61,0.9)";
+      ctx.fillStyle = isDark ? "rgba(233,190,124,0.95)" : "rgba(232,163,61,0.9)";
       ctx.beginPath();
       ctx.arc(-38, -34, 5, 0, Math.PI * 2);
       ctx.fill();
       // Orbit ellipses — gentle, thin
-      ctx.strokeStyle = "rgba(12,111,189,0.22)";
+      ctx.strokeStyle = isDark ? "rgba(111,183,236,0.35)" : "rgba(12,111,189,0.22)";
       ctx.lineWidth = 1;
       ctx.save();
       ctx.rotate(-0.28 + cx * 0.04);
@@ -148,7 +170,7 @@ export default function HeroScene() {
       ctx.restore();
       ctx.save();
       ctx.rotate(0.22 + cy * 0.04);
-      ctx.strokeStyle = "rgba(14,159,154,0.20)";
+      ctx.strokeStyle = isDark ? "rgba(111,211,204,0.30)" : "rgba(14,159,154,0.20)";
       ctx.beginPath();
       ctx.ellipse(0, 0, 148, 92, 0, 0, Math.PI * 2);
       ctx.stroke();
@@ -156,11 +178,11 @@ export default function HeroScene() {
       // Orbit dots
       const o1 = t * 0.00022;
       const o2 = -t * 0.00016;
-      ctx.fillStyle = "#0C6FBD";
+      ctx.fillStyle = isDark ? "#6FB7EC" : "#0C6FBD";
       ctx.beginPath();
       ctx.arc(Math.cos(o1) * 118, Math.sin(o1) * 66 * Math.cos(-0.28) - 0, 3.2, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = "#E8A33D";
+      ctx.fillStyle = isDark ? "#E9BE7C" : "#E8A33D";
       ctx.beginPath();
       ctx.arc(Math.cos(o2) * 148, Math.sin(o2) * 92, 2.8, 0, Math.PI * 2);
       ctx.fill();
@@ -177,13 +199,14 @@ export default function HeroScene() {
         };
       });
       ctx.lineWidth = 1;
+      const linkBase = isDark ? "111,183,236" : "12,111,189";
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
           const dx = pts[i].x - pts[j].x;
           const dy = pts[i].y - pts[j].y;
           const d = Math.hypot(dx, dy);
           if (d < 88) {
-            ctx.strokeStyle = `rgba(12,111,189,${(1 - d / 88) * 0.13})`;
+            ctx.strokeStyle = `rgba(${linkBase},${(1 - d / 88) * (isDark ? 0.20 : 0.13)})`;
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
@@ -193,7 +216,7 @@ export default function HeroScene() {
       }
       for (const { x, y, p } of pts) {
         ctx.globalAlpha = 0.5 + 0.3 * Math.sin(t * 0.001 * p.sp + p.ph);
-        ctx.fillStyle = p.hue;
+        ctx.fillStyle = COLORS[p.ci];
         ctx.beginPath();
         ctx.arc(x, y, p.r, 0, Math.PI * 2);
         ctx.fill();
@@ -243,6 +266,7 @@ export default function HeroScene() {
       host?.removeEventListener("pointermove", onMove as EventListener);
       host?.removeEventListener("pointerleave", onLeave);
       ob.disconnect();
+      themeOb?.disconnect();
     };
   }, [reduce]);
 
