@@ -1,19 +1,30 @@
 "use client";
 import dynamic from "next/dynamic";
-import { motion, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Magnet, Microscope, Sparkles } from "lucide-react";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false, loading: () => <div className="w-full h-full sci-grid-fine opacity-60" aria-hidden /> });
 
 export default function Hero() {
   const reduce = useReducedMotion();
+  // Scrolling-camera exit: copy rises and fades, visual sinks gently —
+  // the first hint that scroll moves through a world, not a page.
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const copyY = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const copyO = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const visualY = useTransform(scrollYProgress, [0, 1], [0, 70]);
+  const visualS = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
+  const visualO = useTransform(scrollYProgress, [0, 0.85], [1, 0.25]);
+  const parallax = (v: object) => (reduce ? {} : v);
   return (
-    <section id="top" className="relative min-h-screen flex flex-col overflow-hidden tint-hero" aria-label="SynLab hero">
+    <section ref={heroRef} id="top" className="relative min-h-screen flex flex-col overflow-hidden tint-hero" aria-label="SynLab hero">
       <div className="pointer-events-none absolute inset-0 sci-grid opacity-70" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_70%_30%,rgba(12,111,189,0.10),transparent_70%)]" aria-hidden />
       <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#E8A33D]/10 blur-2xl" aria-hidden />
       <div className="mx-auto max-w-7xl px-5 md:px-8 w-full pt-28 md:pt-32 grid lg:grid-cols-2 gap-10 items-center flex-1">
-        <div>
+        <motion.div style={parallax({ y: copyY, opacity: copyO })}>
           <motion.p initial={{ opacity: 0, y: reduce ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="inline-flex items-center gap-2 font-grotesk text-[12px] font-semibold tracking-[0.14em] text-cyanx bg-cyanx/10 border border-cyanx/25 rounded-full px-4 py-1.5">
             BY TEAM INNOVEXA · THE PORTABLE LAB
           </motion.p>
@@ -60,15 +71,15 @@ export default function Hero() {
             ))}
           </dl>
           <p className="mt-3 text-[11px] text-muted flex items-center gap-1.5"><Sparkles size={12} className="text-cyanx" /> An exciting new way to experience practical science.</p>
-        </div>
-        <div className="relative h-[420px] md:h-[560px] card overflow-hidden group" role="img" aria-label="Abstract concept of the SynLab portable modular laboratory idea">
+        </motion.div>
+        <motion.div style={parallax({ y: visualY, scale: visualS, opacity: visualO })} className="relative h-[420px] md:h-[560px] card overflow-hidden group" role="img" aria-label="Abstract concept of the SynLab portable modular laboratory idea">
           <div className="absolute inset-0 dot-grid opacity-60" aria-hidden />
           <HeroScene />
           <div className="pointer-events-none absolute top-5 left-4 bg-white/90 backdrop-blur px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk text-ink shadow-card border border-line transition-transform duration-300 group-hover:-translate-y-0.5">Portable concept</div>
           <div className="pointer-events-none absolute top-1/2 right-3 bg-white/90 backdrop-blur px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk text-ink shadow-card border border-line flex items-center gap-1.5 transition-transform duration-300 group-hover:translate-x-0.5"><Microscope size={12} /> Guided observation</div>
           <div className="pointer-events-none absolute bottom-5 left-4 bg-ink text-white px-3 py-2 rounded-full text-[11px] font-semibold font-grotesk flex items-center gap-2 transition-transform duration-300 group-hover:translate-y-0.5"><Magnet size={12} /> Modular design</div>
           <div className="pointer-events-none absolute bottom-5 right-4 hidden md:block text-[10px] font-grotesk font-semibold tracking-[0.12em] text-muted bg-white/80 backdrop-blur px-3 py-1.5 rounded-full border border-line">CONCEPT VISUAL · NOT A BUILD GUIDE</div>
-        </div>
+        </motion.div>
       </div>
       <div className="mx-auto max-w-7xl px-5 md:px-8 pb-8 w-full">
         <nav aria-label="Start the journey" className="flex flex-wrap gap-2 mb-5">

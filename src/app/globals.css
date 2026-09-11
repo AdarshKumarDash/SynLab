@@ -95,6 +95,15 @@ body, .card, .tint-hero, .tint-grey, .tint-white, .tint-blue, .tint-deep,
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { scrollbar-width: none; }
 
+/* Session timeline — a slow simulated sweep across the dashboard chart.
+   Pure decoration over demo values; disabled automatically when the visitor
+   prefers reduced motion (see the global reduced-motion rule). */
+@keyframes session-sweep {
+  from { left: -12%; }
+  to { left: 104%; }
+}
+.session-sweep { animation: session-sweep 9s linear infinite; }
+
 /* ─── DARK THEME — "modern science studio at night" ───
    Deep neutral backgrounds, restrained accents, soft borders, minimal glow.
    Never cyberpunk / neon. */
@@ -194,6 +203,8 @@ body, .card, .tint-hero, .tint-grey, .tint-white, .tint-blue, .tint-deep,
 .dark .group:hover .group-hover\:border-cyanx\/40 { border-color: rgba(111,183,236,0.55) !important; }
 .dark .group:hover .group-hover\:bg-tint { background-color: rgba(46,143,212,0.14) !important; }
 .dark .group:hover .group-hover\:bg-cyanx\/60 { background-color: rgba(111,183,236,0.60) !important; }
+/* White-on-accent hover states must win over the base accent text color */
+.dark .group:hover .group-hover\:text-white { color: #FFFFFF !important; }
 
 /* Elevation tuned for dark — soft depth, never neon */
 .dark .shadow-card { --tw-shadow: 0 1px 2px rgba(0,0,0,0.50), 0 10px 24px -14px rgba(0,0,0,0.65) !important; box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important; }
@@ -207,6 +218,18 @@ body, .card, .tint-hero, .tint-grey, .tint-white, .tint-blue, .tint-deep,
 .dark .to-tint { --tw-gradient-to: #16202B var(--tw-gradient-to-position) !important; }
 .dark .to-cream { --tw-gradient-to: #1B2129 var(--tw-gradient-to-position) !important; }
 .dark .from-cream { --tw-gradient-from: #1B2129 var(--tw-gradient-from-position) !important; }
+
+/* IMPORTANT-prefixed variants (class names literally start with "!") — these
+   power the takeaway / glance / safety / detail gradient boxes, so they need
+   the same dark stops or text goes white-on-white. */
+.dark .\!from-white { --tw-gradient-from: #1B222B var(--tw-gradient-from-position) !important; --tw-gradient-to: rgba(27,34,43,0) var(--tw-gradient-to-position) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+.dark .\!from-tint { --tw-gradient-from: #16202B var(--tw-gradient-from-position) !important; --tw-gradient-to: rgba(22,32,43,0) var(--tw-gradient-to-position) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+.dark .\!to-white { --tw-gradient-to: #1B222B var(--tw-gradient-to-position) !important; }
+.dark .\!to-tint { --tw-gradient-to: #16202B var(--tw-gradient-to-position) !important; }
+.dark .\!to-cream { --tw-gradient-to: #1B2129 var(--tw-gradient-to-position) !important; }
+.dark .\!bg-tint { background-color: #16202B !important; }
+.dark .\!border-cyanx { border-color: rgba(111,183,236,0.55) !important; }
+.dark .\!border-cyanx\/30 { border-color: rgba(111,183,236,0.45) !important; }
 
 /* Sunny / leaf / paper accents stay legible */
 .dark .bg-\[\#FDF3E2\] { background-color: rgba(232,163,61,0.14) !important; }

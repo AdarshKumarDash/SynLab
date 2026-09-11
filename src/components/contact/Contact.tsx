@@ -8,7 +8,6 @@ export default function Contact() {
     <section id="contact" className="py-24 md:py-32 border-t border-line tint-white scroll-mt-16" aria-label="Contact SynLab">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="20"
           eyebrow="CONTACT SYNLAB"
           title={<>LET&apos;S BUILD <span className="text-cyanx">WHAT&apos;S NEXT.</span></>}
           lede="Questions, ideas, collaboration — reach the team behind SynLab directly. Public project contact details only."

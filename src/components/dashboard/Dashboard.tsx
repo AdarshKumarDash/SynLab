@@ -53,7 +53,7 @@ export default function Dashboard() {
   return (
     <section id="dashboard" className="py-24 md:py-32 border-t border-line tint-deep scroll-mt-16" aria-label="Dashboard preview">
       <div className="mx-auto max-w-7xl px-5 md:px-8" ref={ref}>
-        <SectionHead index="13" eyebrow="THE DIGITAL SIDE · SIMULATION MODE" title={<>THE LAB, <span className="text-cyanx">ON SCREEN.</span></>} lede="The dashboard concept is the digital layer of SynLab — a calm screen for observing readings and following guided activities. What you see here is a simulation of that idea." />
+        <SectionHead eyebrow="THE DIGITAL SIDE · SIMULATION MODE" title={<>THE LAB, <span className="text-cyanx">ON SCREEN.</span></>} lede="The dashboard concept is the digital layer of SynLab — a calm screen for observing readings and following guided activities. What you see here is a simulation of that idea." />
         <Reveal className="mt-6 flex flex-wrap items-center gap-2">
           <span className="inline-flex items-center gap-2 text-[12px] font-grotesk font-semibold tracking-[0.10em] border border-[#F0D9A8] text-[#8a5a12] px-4 py-2 rounded-full bg-[#FDF3E2]">
             <span className={`w-2 h-2 rounded-full bg-sunny ${hover && !s.reduced ? "animate-ping" : ""}`} aria-hidden /> SIMULATION MODE — DEMO VALUES ONLY
@@ -91,8 +91,16 @@ export default function Dashboard() {
           <div className="grid md:grid-cols-3 gap-px bg-line">
             <div className="bg-white p-5 md:col-span-2">
               <p className="font-grotesk text-[12px] font-semibold tracking-[0.08em] text-muted flex items-center gap-2"><Activity size={14} className="text-cyanx" /> ACTIVITY TREND · CONDITIONS OVER TIME (SIMULATED)</p>
-              <div className="h-56 mt-4 rounded-card bg-paper border border-line p-2" role="img" aria-label="Simulated illustration of activity trends over time">
+              <div className="h-56 mt-4 rounded-card bg-paper border border-line p-2 relative overflow-hidden" role="img" aria-label="Simulated illustration of activity trends over time">
                 <DashboardChart series={s.series} dark={dark} />
+                {/* Session sweep — a slow simulated playhead over demo values */}
+                <span className="absolute inset-y-2 w-10 pointer-events-none bg-gradient-to-r from-transparent via-cyanx/15 to-transparent session-sweep" aria-hidden />
+              </div>
+              <div className="mt-3 flex items-center gap-3" aria-hidden>
+                <span className="font-grotesk text-[10px] font-bold tracking-[0.12em] text-muted whitespace-nowrap">SESSION TIMELINE · SIMULATED</span>
+                <span className="relative h-1 flex-1 rounded-full bg-cream overflow-hidden">
+                  <span className="absolute inset-y-0 w-1/6 rounded-full bg-cyanx/60 session-sweep" />
+                </span>
               </div>
               <p className="mt-2 text-[11px] text-muted">Illustrative trends only — the concept is about following change, not these numbers.</p>
               <div className="mt-4 grid grid-cols-2 gap-3 text-xs">

@@ -1,11 +1,37 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ROADMAP } from "@/data/content";
 import { Reveal, SectionHead, Takeaway } from "../ui/primitives";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import CoreNetwork from "../cinematic/CoreNetwork";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Check, Telescope, Building2 } from "lucide-react";
 
 const ICONS = [Check, Telescope, Building2];
+
+/**
+ * DepthWrap — foreground / midground / horizon drift.
+ * ONE travels least and arrives sharpest; CORE drifts furthest and stays
+ * softest, so maturity reads as depth. Transform + opacity only.
+ */
+function DepthWrap({ index, children }: { index: number; children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.95", "end 0.45"] });
+  const cfg = [
+    { y: [26, -14] as [number, number], s: [0.985, 1] as [number, number], o: [0.65, 1] as [number, number] },
+    { y: [54, -22] as [number, number], s: [0.965, 0.995] as [number, number], o: [0.5, 1] as [number, number] },
+    { y: [88, -30] as [number, number], s: [0.945, 0.99] as [number, number], o: [0.4, 1] as [number, number] },
+  ][index];
+  const y = useTransform(scrollYProgress, [0, 1], cfg.y);
+  const scale = useTransform(scrollYProgress, [0, 1], cfg.s);
+  const opacity = useTransform(scrollYProgress, [0, 1], cfg.o);
+  if (reduce) return <div className="h-full">{children}</div>;
+  return (
+    <motion.div ref={ref} style={{ y, scale, opacity }} className="h-full will-change-transform">
+      {children}
+    </motion.div>
+  );
+}
 
 export default function Roadmap() {
   const [sel, setSel] = useState("one");
@@ -21,7 +47,6 @@ export default function Roadmap() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_40%_at_50%_8%,rgba(12,111,189,0.08),transparent_70%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="09"
           eyebrow="THE SYNLAB ROADMAP · ONE → PRO → CORE"
           title={<>ONE IDEA.<br />A CLEAR <span className="text-cyanx">PATH FORWARD.</span></>}
           lede="ONE is tangible today. PRO and CORE describe where the concept could go next — clearly labelled as future directions, never as current products."
@@ -65,10 +90,11 @@ export default function Roadmap() {
             const isSel = sel === r.id;
             return (
               <li key={r.id} className="contents">
+                <DepthWrap index={i}>
                 <button
                   onClick={() => setSel(r.id)}
                   aria-pressed={isSel}
-                  className={`text-left rounded-card border p-6 relative overflow-hidden transition-all duration-300 card-hover pressable group ${
+                  className={`h-full w-full text-left rounded-card border p-6 relative overflow-hidden transition-all duration-300 card-hover pressable group ${
                     isCurrent
                       ? "border-cyanx bg-white shadow-lift ring-2 ring-cyanx/25"
                       : "border-dashed border-line bg-white/70 hover:border-cyanx/50"
@@ -94,6 +120,7 @@ export default function Roadmap() {
                   </span>
                   {!isCurrent && <span className="absolute top-4 right-4 sr-only">Future direction</span>}
                 </button>
+                </DepthWrap>
                 {i < ROADMAP.length - 1 && (
                   <span className="hidden md:grid place-items-center text-muted px-1" aria-hidden>
                     <span className="grid place-items-center w-9 h-9 rounded-full border border-line bg-white font-bold text-cyanx">→</span>
@@ -138,6 +165,7 @@ export default function Roadmap() {
                     FUTURE / PROPOSED — VISION, NOT A CURRENT CAPABILITY
                   </p>
                 )}
+                {active.id === "core" && <CoreNetwork />}
               </div>
               <div className="flex flex-col justify-center gap-3">
                 <div className={`rounded-2xl border p-5 ${active.id === "one" ? "border-cyanx/30 bg-gradient-to-b from-white to-tint" : "border-line bg-paper"}`}>

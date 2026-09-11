@@ -32,7 +32,6 @@ export default function Research() {
     <section id="research" className="py-24 md:py-32 border-t border-line tint-hero scroll-mt-16" aria-label="Research and validation">
       <div className="mx-auto max-w-7xl px-5 md:px-8" ref={ref}>
         <SectionHead
-          index="14"
           eyebrow="RESEARCH & VALIDATION"
           title={<>BUILT AROUND A<br /><span className="text-cyanx">REAL PROBLEM.</span></>}
           lede="Team Innovexa spoke with students, educators, parents, hobbyists, institutions and researchers — then shaped SynLab around what they heard. No raw responses or personal data here; just the patterns that guided the design."

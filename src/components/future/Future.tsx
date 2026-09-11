@@ -15,7 +15,6 @@ export default function Future() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_50%_15%,rgba(12,111,189,0.12),transparent_70%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="16"
           eyebrow="SYNLAB PRO · THE NEXT CHAPTER"
           title={<>WHERE COULD THIS <span className="text-cyanx text-glow">GO NEXT?</span></>}
           lede="SynLab PRO is envisioned as the advanced research-oriented direction of the platform, extending the portable laboratory concept toward deeper scientific investigation and more sophisticated measurement capabilities. Everything here is future / proposed — vision, not current capability."
@@ -53,7 +52,12 @@ export default function Future() {
             ))}
           </ul>
           <div className="card p-8 md:p-10 relative overflow-hidden !bg-gradient-to-b !from-white !to-tint" aria-live="polite" key={C.title}>
-            <div className="absolute inset-0 dot-grid opacity-40" aria-hidden />
+            {/* Blueprint of possibility — abstract drafting language, zero implementation */}
+            <div className="absolute inset-0 sci-grid-fine opacity-70" aria-hidden />
+            <div className="absolute inset-0 dot-grid opacity-30" aria-hidden />
+            <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full border border-dashed border-cyanx/25 pointer-events-none" aria-hidden />
+            <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full border border-cyanx/15 pointer-events-none" aria-hidden />
+            <div className="absolute -left-16 -bottom-16 w-52 h-52 rounded-full border border-dashed border-cyanx/20 pointer-events-none" aria-hidden />
             <div className="relative">
               <span className="w-12 h-12 rounded-2xl bg-ink text-white grid place-items-center"><Icon size={22} /></span>
               <h3 className="font-grotesk text-2xl md:text-3xl font-bold mt-5 text-ink">{C.title}</h3>

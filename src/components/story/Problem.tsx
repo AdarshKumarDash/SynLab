@@ -2,23 +2,29 @@
 import { useState } from "react";
 import { PROBLEMS, KEY_FINDINGS } from "@/data/content";
 import { Reveal, SectionHead, FactStrip, Takeaway, MethodNote } from "../ui/primitives";
+import { DataFilm } from "../cinematic/DataFilm";
+import { useCinematicEnabled } from "../cinematic/useCinematic";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Problem() {
   const [active, setActive] = useState(0);
+  const cinematic = useCinematicEnabled();
   const p = PROBLEMS[active];
   return (
     <section id="why" className="relative py-24 md:py-32 border-t border-line tint-grey scroll-mt-16" aria-label="Why SynLab exists">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="02"
           eyebrow="WHY SYNLAB EXISTS"
           title={<>SCIENCE IS MEANT<br />TO BE <span className="text-cyanx">EXPLORED.</span></>}
           lede="But practical experimentation can be limited by where it happens, when there's time, how it's guided — and whether it feels safe and reachable. Team Innovexa's stakeholder research confirmed these barriers are widely felt."
         />
-        <Reveal className="mt-8">
-          <FactStrip facts={KEY_FINDINGS} />
-        </Reveal>
+        {cinematic ? (
+          <DataFilm />
+        ) : (
+          <Reveal className="mt-8">
+            <FactStrip facts={KEY_FINDINGS} />
+          </Reveal>
+        )}
         <p className="mt-3 text-[12px] text-muted">From a small directional stakeholder study. Select each lens to see it from a learner&apos;s perspective.</p>
         <div className="mt-12 grid lg:grid-cols-[1fr_1.2fr] gap-8">
           <div role="tablist" aria-label="Barriers" className="flex lg:flex-col gap-2 overflow-x-auto no-scrollbar">

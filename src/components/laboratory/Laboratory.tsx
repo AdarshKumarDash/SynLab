@@ -12,6 +12,15 @@ const POS: Record<string, { assembled: { x: number; y: number }; exploded: { x: 
   support: { assembled: { x: 0, y: 0 }, exploded: { x: -160, y: -100 }, w: "w-36 md:w-48", h: "h-16" },
 };
 
+/** Camera spotlight — a soft "look here" glow that glides to the selected region. */
+const SPOT: Record<string, { x: number; y: number }> = {
+  hub: { x: 0, y: 0 },
+  carry: { x: -52, y: 66 },
+  modules: { x: 58, y: 12 },
+  sensing: { x: 54, y: -66 },
+  support: { x: -52, y: -62 },
+};
+
 export default function Laboratory() {
   const [mode, setMode] = useState<"assembled" | "deconstructed">("assembled");
   const [sel, setSel] = useState("hub");
@@ -24,7 +33,6 @@ export default function Laboratory() {
       <div className="absolute inset-0 dot-grid opacity-40" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="07"
           eyebrow="THE CONCEPT, VISUALLY"
           title={<>ONE LAB. <span className="text-cyanx">MANY POSSIBILITIES.</span></>}
           lede="A conceptual look at the SynLab ONE experience — what each part means for the learner. This is an illustration of the idea, not a build guide."
@@ -42,6 +50,15 @@ export default function Laboratory() {
         <div className="mt-8 grid lg:grid-cols-[1.4fr_1fr] gap-6">
           <div className="card relative h-[440px] md:h-[520px] overflow-hidden flex items-center justify-center !bg-gradient-to-b !from-white !to-cream">
             <div className="absolute inset-0 sci-grid-fine opacity-70" aria-hidden />
+            {/* Camera spotlight — glides behind the selected region: "look here" */}
+            <motion.span
+              aria-hidden
+              className="absolute left-1/2 top-1/2 -ml-32 -mt-32 w-64 h-64 rounded-full pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(12,111,189,0.13), transparent 65%)" }}
+              initial={false}
+              animate={reduce ? { x: 0, y: 0 } : { x: SPOT[sel].x, y: SPOT[sel].y }}
+              transition={{ type: "spring", stiffness: 60, damping: 18 }}
+            />
             <div className="relative w-[300px] h-[300px]" role="group" aria-label={exploded ? "Conceptual exploded view of the SynLab experience — select an area" : "SynLab portable lab concept — select an area"}>
               {LAB_ZONES.map((z) => {
                 const cfg = POS[z.id];
@@ -69,10 +86,10 @@ export default function Laboratory() {
                 );
               })}
               {exploded && !reduce && (
-                <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
-                  <line x1="50%" y1="45%" x2="18%" y2="75%" stroke="#0C6FBD" strokeDasharray="5 5" opacity="0.5" strokeWidth="1.5" />
-                  <line x1="50%" y1="45%" x2="82%" y2="50%" stroke="#0C6FBD" strokeDasharray="5 5" opacity="0.5" strokeWidth="1.5" />
-                  <line x1="50%" y1="45%" x2="80%" y2="18%" stroke="#0C6FBD" strokeDasharray="5 5" opacity="0.5" strokeWidth="1.5" />
+                <svg className="absolute inset-0 w-full h-full pointer-events-none text-cyanx" aria-hidden>
+                  <line x1="50%" y1="45%" x2="18%" y2="75%" stroke="currentColor" strokeDasharray="5 5" opacity="0.55" strokeWidth="1.5" />
+                  <line x1="50%" y1="45%" x2="82%" y2="50%" stroke="currentColor" strokeDasharray="5 5" opacity="0.55" strokeWidth="1.5" />
+                  <line x1="50%" y1="45%" x2="80%" y2="18%" stroke="currentColor" strokeDasharray="5 5" opacity="0.55" strokeWidth="1.5" />
                 </svg>
               )}
             </div>

@@ -7,7 +7,6 @@ export default function Idea() {
     <section id="idea" className="relative py-24 md:py-32 border-t border-line tint-white scroll-mt-16" aria-label="The idea">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="01"
           eyebrow="THE IDEA"
           title={<>WHAT IF THE LAB DIDN&apos;T HAVE<br />TO STAY IN <span className="text-cyanx">ONE PLACE?</span></>}
           lede="Science is meant to be explored — touched, tried, observed. But for many learners, practical work only happens in one room, on one timetable, with one fixed setup."

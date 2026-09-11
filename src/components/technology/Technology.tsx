@@ -6,6 +6,22 @@ import { Radar, SlidersHorizontal, Boxes, MonitorSmartphone } from "lucide-react
 
 const ICONS = { sense: Radar, control: SlidersHorizontal, modules: Boxes, digital: MonitorSmartphone } as const;
 
+/** Four concentric layers; the selected pillar's ring lights up. Inner → outer: sensing, control, modularity, digital. */
+function TechRings({ active, label }: { active: number; label: string }) {
+  const radii = [22, 32, 42, 52];
+  return (
+    <svg viewBox="0 0 120 120" className="w-16 h-16 text-cyanx" role="img" aria-label={`Technology layers, ${label} active`}>
+      {radii.map((r, i) => (
+        <circle
+          key={r} cx="60" cy="60" r={r} fill="none" stroke="currentColor"
+          strokeWidth={i === active ? 3 : 1.25} opacity={i === active ? 1 : 0.28}
+        />
+      ))}
+      <circle cx="60" cy="60" r="7" fill="currentColor" />
+    </svg>
+  );
+}
+
 export default function Technology() {
   const [sel, setSel] = useState(TECH_PILLARS[0].name);
   const c = TECH_PILLARS.find((t) => t.name === sel)!;
@@ -14,7 +30,6 @@ export default function Technology() {
     <section id="technology" className="py-24 md:py-32 border-t border-line tint-blue scroll-mt-16" aria-label="Technology behind the experience">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="12"
           eyebrow="TECHNOLOGY"
           title={<>THE TECHNOLOGY<br />BEHIND THE <span className="text-cyanx">EXPERIENCE.</span></>}
           lede="Enough to trust the concept — never enough to copy it. Four ideas work together so learners can focus on science, not setup."
@@ -34,7 +49,11 @@ export default function Technology() {
           <div className="card p-6 md:p-8 relative overflow-hidden" aria-live="polite">
             <div className="absolute inset-0 dot-grid opacity-40" aria-hidden />
             <div className="relative" key={c.name}>
-              <span className="w-12 h-12 rounded-2xl bg-ink text-white grid place-items-center"><Icon size={22} /></span>
+              <span className="flex items-center gap-4">
+                <span className="w-12 h-12 rounded-2xl bg-ink text-white grid place-items-center shrink-0"><Icon size={22} /></span>
+                {/* Four layers around the concept — the active capability lights its ring */}
+                <TechRings active={TECH_PILLARS.findIndex((t) => t.name === sel)} label={c.name} />
+              </span>
               <p className="font-grotesk text-[12px] font-semibold tracking-[0.14em] text-cyanx mt-5">CAPABILITY</p>
               <h3 className="font-grotesk text-3xl font-bold mt-2 text-ink">{c.name}</h3>
               <dl className="mt-6 space-y-4 text-sm">

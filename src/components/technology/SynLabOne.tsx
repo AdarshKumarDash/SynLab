@@ -1,5 +1,7 @@
 "use client";
 import { Reveal, SectionHead, Takeaway, useInViewOnce } from "../ui/primitives";
+import { OneReveal } from "../cinematic/OneReveal";
+import { useCinematicEnabled } from "../cinematic/useCinematic";
 import { motion, useReducedMotion } from "framer-motion";
 import { Package, Eye, Activity, Blocks, ArrowRight } from "lucide-react";
 
@@ -73,11 +75,11 @@ function AssemblyVisual({ assemble }: { assemble: boolean }) {
 
 export default function SynLabOne() {
   const { ref, inView } = useInViewOnce<HTMLDivElement>();
+  const cinematic = useCinematicEnabled();
   return (
     <section id="one" className="py-24 md:py-32 border-t border-line tint-white scroll-mt-16" aria-label="SynLab ONE">
       <div className="mx-auto max-w-7xl px-5 md:px-8" ref={ref}>
         <SectionHead
-          index="06"
           eyebrow="SYNLAB ONE · THE FIRST STEP"
           title={<>MEET SYNLAB <span className="text-cyanx">ONE.</span></>}
           lede="SynLab ONE is the first tangible implementation of the portable laboratory concept — a modular, hands-on platform designed to bring practical science closer to the learner."
@@ -93,11 +95,15 @@ export default function SynLabOne() {
           <span className="text-[13px] text-muted font-medium">An idea became something tangible. What it is — not how to build it.</span>
         </motion.div>
 
-        {/* Product-reveal moment */}
-        <Reveal className="mt-8">
-          <AssemblyVisual assemble={inView} />
-          <p className="mt-2 text-[11px] text-muted text-center">Concept visual — an idea becoming tangible. Implementation details intentionally not shown.</p>
-        </Reveal>
+        {/* Product-reveal moment — pinned scroll scene on desktop, calm visual otherwise */}
+        {cinematic ? (
+          <OneReveal />
+        ) : (
+          <Reveal className="mt-8">
+            <AssemblyVisual assemble={inView} />
+            <p className="mt-2 text-[11px] text-muted text-center">Concept visual — an idea becoming tangible. Implementation details intentionally not shown.</p>
+          </Reveal>
+        )}
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {HIGHLIGHTS.map((h, i) => (

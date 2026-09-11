@@ -11,7 +11,6 @@ export default function Story() {
     <section id="story" className="py-24 md:py-32 border-t border-line tint-grey scroll-mt-16" aria-label="Invention story">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="05"
           eyebrow="OUR STORY"
           title={<>THE JOURNEY OF<br />AN <span className="text-cyanx">INVENTION.</span></>}
           lede="How a frustration with fixed laboratories became a portable concept — told the way we'd tell it in person. Each chapter expands."

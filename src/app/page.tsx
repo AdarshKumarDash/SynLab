@@ -1,6 +1,7 @@
 import Navigation from "@/components/navigation/Navigation";
 import StoryProgress from "@/components/navigation/StoryProgress";
 import Hero from "@/components/hero/Hero";
+import TransitionBand from "@/components/cinematic/TransitionBand";
 import Idea from "@/components/idea/Idea";
 import Problem from "@/components/story/Problem";
 import Answer from "@/components/answer/Answer";
@@ -31,6 +32,7 @@ export default function Page() {
       <StoryProgress />
       <main id="main">
         <Hero />
+        <TransitionBand />
         <Idea />
         <Problem />
         <Answer />

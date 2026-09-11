@@ -7,7 +7,6 @@ export default function Team() {
     <section id="team" className="py-24 md:py-32 border-t border-line tint-white scroll-mt-16" aria-label="Team">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="18"
           eyebrow="TEAM INNOVEXA"
           title={<>THE PEOPLE BEHIND<br />THE <span className="text-cyanx">IDEA.</span></>}
           lede="The people working to turn an idea into something tangible — students who researched the problem, shaped the concept and built the first prototype."

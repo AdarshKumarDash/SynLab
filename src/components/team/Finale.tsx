@@ -1,7 +1,8 @@
 "use client";
+import { useEffect, useState } from "react";
 import { CONTACT_EMAIL } from "@/data/content";
 import { Reveal, useInViewOnce } from "../ui/primitives";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Mail } from "lucide-react";
 
 const GROUPS = [
@@ -56,7 +57,7 @@ export default function Finale() {
 
       <div className="relative mx-auto max-w-5xl px-5 md:px-8 text-center">
         <Reveal>
-          <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">21 · WHERE THIS LEADS</p>
+          <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">WHERE THIS LEADS</p>
           <h2 className="font-grotesk font-bold tracking-tight text-4xl md:text-6xl mt-4 text-ink leading-[1.05] md:leading-[1.05]">
             THE LAB SHOULDN&apos;T HAVE<br />TO STAY IN <span className="text-cyanx">ONE PLACE.</span>
           </h2>
@@ -85,18 +86,60 @@ export default function Finale() {
         <p className="mt-4 text-[12px] text-muted">Public concept website — implementation details are intentionally not shared.</p>
 
         <Reveal delay={0.1}>
-          <motion.div
-            initial={{ opacity: 0, scale: reduce ? 1 : 0.94 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <p className="font-grotesk font-bold tracking-tight text-2xl mt-14 text-ink">SynLab</p>
-            <p className="text-body mt-2 text-lg">Bringing the Lab to Every Learner</p>
-            <p className="text-[11px] font-semibold tracking-[0.18em] font-grotesk text-muted mt-2">TEAM INNOVEXA</p>
-          </motion.div>
+          <Credits start={inView} reduce={reduce ?? false} />
         </Reveal>
       </div>
     </section>
+  );
+}
+
+/**
+ * END CREDITS — a quiet resolving sequence before the footer.
+ * SYN · LAB → SYNLAB → THE PORTABLE LAB → the wordmark. Film-like,
+ * restrained, and instant when reduced motion is requested.
+ */
+function Credits({ start, reduce }: { start: boolean; reduce: boolean }) {
+  const [beat, setBeat] = useState(0);
+  useEffect(() => {
+    if (!start || reduce) {
+      if (reduce) setBeat(3);
+      return;
+    }
+    if (beat >= 3) return;
+    const id = setTimeout(() => setBeat((b) => b + 1), beat === 0 ? 1500 : 1050);
+    return () => clearTimeout(id);
+  }, [beat, start, reduce]);
+
+  return (
+    <div className="mt-14 min-h-[120px] grid place-items-center" aria-label="SynLab, the portable lab, by Team Innovexa">
+      <AnimatePresence mode="wait">
+        {beat < 3 ? (
+          <motion.p
+            key={beat}
+            aria-hidden
+            initial={{ opacity: 0, y: reduce ? 0 : 14, letterSpacing: beat === 0 ? "0.6em" : "0.3em" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: reduce ? 0 : -12 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className={`font-grotesk text-muted ${
+              beat === 0 ? "text-sm md:text-base font-semibold" : beat === 1 ? "text-3xl md:text-4xl font-bold text-ink" : "text-xs md:text-sm font-bold"
+            }`}
+          >
+            {beat === 0 ? "SYN · LAB" : beat === 1 ? "SYNLAB" : "THE PORTABLE LAB"}
+          </motion.p>
+        ) : (
+          <motion.div
+            key="mark"
+            initial={{ opacity: 0, scale: reduce ? 1 : 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="font-grotesk font-bold tracking-tight text-2xl text-ink">SynLab</p>
+            <p className="text-body mt-2 text-lg">Bringing the Lab to Every Learner</p>
+            <p className="text-[11px] font-semibold tracking-[0.18em] font-grotesk text-muted mt-2">TEAM INNOVEXA</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

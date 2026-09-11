@@ -10,20 +10,21 @@ export default function Answer() {
     <section id="answer" className="py-24 md:py-32 border-t border-line tint-hero scroll-mt-16" aria-label="The SynLab answer">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHead
-          index="03"
           eyebrow="THE SYNLAB ANSWER"
           title={<>A LAB THAT COMES<br />TO THE <span className="text-cyanx">LEARNER.</span></>}
           lede="SynLab is a portable, modular laboratory concept designed to bring practical experimentation closer to the learner — hands-on, adaptable and guided."
         />
         <Reveal className="mt-8">
-          <dl className="card px-5 py-4 !bg-gradient-to-r !from-white !to-tint flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="SynLab at a glance">
+          <dl className="card px-5 py-5 !bg-gradient-to-r !from-white !to-tint" aria-label="SynLab at a glance">
             <dt className="font-grotesk text-[11px] font-bold tracking-[0.14em] text-cyanx">AT A GLANCE</dt>
-            {AT_A_GLANCE.map((g) => (
-              <div key={g.title} className="flex items-baseline gap-1.5" title={g.body}>
-                <dd className="font-grotesk font-bold text-[13px] tracking-[0.06em] text-ink">{g.title}</dd>
-                <dd className="text-[11px] text-muted hidden xl:inline">{g.body}</dd>
-              </div>
-            ))}
+            <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-3">
+              {AT_A_GLANCE.map((g) => (
+                <div key={g.title} title={g.body}>
+                  <dd className="font-grotesk font-bold text-[13px] tracking-[0.06em] text-ink">{g.title}</dd>
+                  <dd className="text-[11px] text-muted mt-0.5 leading-snug">{g.body}</dd>
+                </div>
+              ))}
+            </div>
           </dl>
         </Reveal>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-3">

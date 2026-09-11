@@ -10,7 +10,6 @@ export default function Model3D() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-8 grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <SectionHead
-            index="08"
             eyebrow="SEE SYNLAB IN 3D"
             title={<>EXPLORE THE<br />CONCEPT <span className="text-cyanx">IN 3D.</span></>}
             lede="Explore the physical concept from another angle — orbit, zoom and inspect the form of the idea."

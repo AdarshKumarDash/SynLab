@@ -8,7 +8,7 @@ export default function Impact() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_55%_45%_at_50%_30%,rgba(12,111,189,0.12),transparent_70%)]" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8 text-center">
         <Reveal>
-          <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">17 · IMPACT</p>
+          <p className="font-grotesk text-[12px] font-semibold tracking-[0.18em] text-cyanx">IMPACT</p>
           <h2 className="font-grotesk mt-4 text-4xl md:text-6xl font-bold tracking-tight text-ink leading-[1.05] md:leading-[1.05]">
             MORE ACCESS TO<br />PRACTICAL <span className="text-cyanx">SCIENCE.</span>
           </h2>

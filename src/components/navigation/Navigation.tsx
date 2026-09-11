@@ -57,7 +57,7 @@ export default function Navigation() {
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
           <a href="#contact" className="hidden sm:inline-flex btn-primary font-grotesk text-[12px] font-bold tracking-[0.12em] px-5 py-2.5 pressable">CONTACT</a>
-          <button className="lg:hidden p-2 border border-line rounded-xl bg-white text-ink" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
+          <button className="lg:hidden p-3 border border-line rounded-xl bg-white text-ink" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>

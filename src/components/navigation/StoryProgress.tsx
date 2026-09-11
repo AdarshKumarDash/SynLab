@@ -74,8 +74,8 @@ export default function StoryProgress() {
         aria-label="Explore SynLab — section progress"
         className={`hidden lg:flex fixed right-4 xl:right-6 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-1 transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
-        <div className="flex flex-col items-end gap-0.5 rounded-2xl border border-line bg-white/85 dark:bg-[#171C23]/85 backdrop-blur-md px-2.5 py-3 shadow-card max-h-[82vh] overflow-y-auto no-scrollbar">
-          <p className="font-grotesk text-[9px] font-bold tracking-[0.16em] text-muted px-1 pb-1">EXPLORE SYNLAB</p>
+        <div className="flex flex-col items-end gap-[3px] rounded-2xl border border-line bg-white/90 dark:bg-[#171C23]/90 backdrop-blur-md px-3 py-3 shadow-card max-h-[82vh] overflow-y-auto no-scrollbar">
+          <p className="font-grotesk text-[9px] font-bold tracking-[0.16em] text-muted px-1 pb-1.5 whitespace-nowrap">EXPLORE SYNLAB</p>
           {STEPS.map((s, i) => {
             const isActive = i === active;
             const isPast = i < active;
@@ -86,22 +86,22 @@ export default function StoryProgress() {
                 aria-label={`Go to ${s.label}`}
                 aria-current={isActive ? "true" : undefined}
                 tabIndex={visible ? 0 : -1}
-                className="group flex items-center gap-2 py-[3px] text-right"
+                className="group flex items-center gap-2 py-[4px] text-right whitespace-nowrap"
               >
                 <span
-                  className={`font-grotesk text-[10px] font-bold tracking-[0.1em] transition-all duration-200 ${
-                    isActive ? "text-cyanx opacity-100" : "text-muted opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
+                  className={`font-grotesk text-[10px] font-bold tracking-[0.1em] transition-colors duration-200 ${
+                    isActive ? "text-cyanx" : "text-muted group-hover:text-body"
                   }`}
                 >
                   {s.n} {s.label}
                 </span>
                 <span
-                  className={`block rounded-full transition-all duration-200 ${
+                  className={`rounded-full transition-all duration-200 ${
                     isActive
-                      ? "w-2.5 h-2.5 bg-cyanx shadow-soft"
+                      ? "w-6 h-[3px] bg-cyanx shadow-soft"
                       : isPast
-                        ? "w-1.5 h-1.5 bg-cyanx/50"
-                        : "w-1.5 h-1.5 bg-line group-hover:bg-cyanx/60"
+                        ? "w-2 h-2 bg-cyanx/50"
+                        : "w-2 h-2 bg-line group-hover:bg-cyanx/60"
                   }`}
                 />
               </button>
