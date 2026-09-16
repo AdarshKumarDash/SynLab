@@ -15,7 +15,6 @@ import Audiences from "@/components/audiences/Audiences";
 import UseCases from "@/components/usecases/UseCases";
 import Technology from "@/components/technology/Technology";
 import Dashboard from "@/components/dashboard/Dashboard";
-import Research from "@/components/research/Research";
 import Comparison from "@/components/comparison/Comparison";
 import Future from "@/components/future/Future";
 import Impact from "@/components/impact/Impact";
@@ -46,7 +45,6 @@ export default function Page() {
         <UseCases />
         <Technology />
         <Dashboard />
-        <Research />
         <Comparison />
         <Future />
         <Impact />
